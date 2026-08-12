@@ -1,0 +1,41 @@
+"use server";
+import { redirect } from "next/navigation";
+import { supabase } from "@/lib/supabase/client";
+
+const HOUSEHOLD_ID =
+  "dbecda94-3798-4425-9616-74a6c08cd2c2";
+
+export async function createExpense(
+  formData: FormData
+) {
+  const amount = Number(
+    formData.get("amount")
+  );
+
+  const description = String(
+    formData.get("description")
+  );
+
+  const category_id = Number(
+    formData.get("category_id")
+  );
+
+  const subcategory_id = Number(
+  formData.get("subcategory_id")
+  );
+
+  const result = await supabase
+    .from("expenses")
+    .insert({
+      household_id: HOUSEHOLD_ID,
+      date: new Date()
+        .toISOString()
+        .split("T")[0],
+      amount,
+      description,
+      category_id,
+      subcategory_id,
+    });
+    redirect("/");
+  console.log(result);
+}
