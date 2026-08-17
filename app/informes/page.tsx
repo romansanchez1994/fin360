@@ -6,12 +6,12 @@ export default function InformesPage() {
 
       /
         ← Dashboard
-      </Link>
+      <Link>
 
       <h1 className="text-3xl font-bold mt-4 mb-6">
         Informe de gastos
       </h1>
-
+      </Link>
     </main>
   );
 }
