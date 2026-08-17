@@ -224,19 +224,20 @@ export default async function Home() {
                     ? ` · ${gasto.subcategories.name}`
                     : ""}
                   </div>
-                  <Link href={`/expenses/${gasto.id}/edit`}className="text-blue-400">
-                      Editar
-                  </Link>
+
                   <div className="flex gap-4 mt-2">
-                  <form action={deleteExpenseWithId}>
-                    <button
-                        type="submit"
-                        className="text-red-400 text-sm"
-                      
-                        >
-                          Eliminar
-                    </button>
-                  </form>
+                    <Link href={`/expenses/${gasto.id}/edit`}className="text-blue-400 text-sm">
+                        Editar
+                    </Link>
+                    <form action={deleteExpenseWithId}>
+                      <button
+                          type="submit"
+                          className="text-red-400 text-sm"
+                          >
+                            Eliminar
+                      </button>
+                    </form>
+                  </div>
                 </div>
                 <span className="font-semibold text-white text-lg">
                   {Number(gasto.amount).toFixed(2)} €
