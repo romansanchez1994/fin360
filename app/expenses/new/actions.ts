@@ -21,12 +21,12 @@ export async function createExpense(
   );
 
   const subcategoryValue =
-    formData.get("subcategory_id"=);
+    formData.get("subcategory_id");
   
   const subcategory_id = 
     subcategoryValue
       ? Number(subcategoryValue)
-      null;
+      : null;
   );
 
   const result = await supabase
@@ -40,7 +40,7 @@ export async function createExpense(
       description,
       category_id,
       subcategory_id,
-    });
-    redirect("/");
+  });
   console.log(result);
+  redirect("/");
 }
