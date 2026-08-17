@@ -53,35 +53,36 @@ export default function CategoryForm({
         />
       </div>
 
-      <div>
-        <label className="block mb-1">
-          Categoría
-        </label>
-
-        <select
-          name="category_id"
-          value={selectedCategory}
-          onChange={(e) =>
-            setSelectedCategory(e.target.value)
-          }
-          className="w-full border rounded-lg p-3"
-          required
-        >
-          <option value="">
-            Selecciona una categoría
-          </option>
-
-          {categories.map((category) => (
-            <option
-              key={category.id}
-              value={category.id}
+      {filteredSubcategories.length > 0 && (
+          <div>
+            <label className="block mb-1">
+              Categoría
+            </label>
+    
+            <select
+              name="category_id"
+              value={selectedCategory}
+              onChange={(e) =>
+                setSelectedCategory(e.target.value)
+              }
+              className="w-full border rounded-lg p-3"
+              required
             >
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
+              <option value="">
+                Selecciona una categoría
+              </option>
+    
+              {categories.map((category) => (
+                <option
+                  key={category.id}
+                  value={category.id}
+                >
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+      )}
       <div>
         <label className="block mb-1">
           Subcategoría
