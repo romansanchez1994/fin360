@@ -225,7 +225,7 @@ export default async function Home() {
                     : ""}
                   </div>
 
-                  <div className="flex gap-4 mt-2">
+                  <div className="flex items-center gap-4 mt-2">
                     <Link href={`/expenses/${gasto.id}/edit`}className="text-blue-400 text-sm">
                         Editar
                     </Link>
