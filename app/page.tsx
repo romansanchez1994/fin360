@@ -195,7 +195,7 @@ export default async function Home() {
             return (
               <div
                 key={gasto.id}
-                className={`flex  justify-between p-4 rounded-xl ${
+                className={`flex  justify-between p-4 rounded-xl shadow-sm mb-2 ${
                   index % 2 === 0
                     ? "bg-gray-50"
                     : "bg-gray-100"
