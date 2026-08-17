@@ -198,7 +198,7 @@ export default async function Home() {
                 className="flex justify-between"
               >
                 <div>
-                  <div classNam="text-xs text-gray-500">
+                  <div className="text-xs text-gray-500">
                     {new Date(gasto.date).toLocaleDateString("es-ES",
                                                              {
                                                                day: "2-digit",
