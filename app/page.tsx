@@ -195,10 +195,10 @@ export default async function Home() {
             return (
               <div
                 key={gasto.id}
-                className={`flex  justify-between p-4 rounded-xl shadow-sm mb-2 ${
+                className={`flex  justify-between p-4 rounded-2xl mb-3 ${
                   index % 2 === 0
-                    ? "bg-gray-50"
-                    : "bg-gray-100"
+                    ? "bg-zinc-900"
+                    : "bg-zinc-800"
                 }`}
               >
                 <div>
@@ -212,32 +212,33 @@ export default async function Home() {
                     )}
                   </div>
 
-                  <div className="font-medium">
+                  <div className="font-medium text-white">
                     {gasto.description}
                   </div>
                   
 
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm text-gray-400">
                     {gasto.categories?.name}
 
                     {gasto.subcategories?.name
                     ? ` · ${gasto.subcategories.name}`
                     : ""}
                   </div>
-                  <Link href={`/expenses/${gasto.id}/edit`}>
+                  <Link href={`/expenses/${gasto.id}/edit`}className="text-blue-400">
                       Editar
                   </Link>
+                  <div className="flex gap-4 mt-2">
                   <form action={deleteExpenseWithId}>
                     <button
                         type="submit"
-                        className="text-red-600 text-sm"
+                        className="text-red-400 text-sm"
                       
                         >
                           Eliminar
                     </button>
                   </form>
                 </div>
-                <span className="font-semibold">
+                <span className="font-semibold text-white text-lg">
                   {Number(gasto.amount).toFixed(2)} €
                 </span>
               </div>
