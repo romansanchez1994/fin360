@@ -40,7 +40,7 @@ export async function createExpense(
       description,
       category_id,
       subcategory_id,
-  });
+    });
   console.log(result);
   redirect("/");
 }
