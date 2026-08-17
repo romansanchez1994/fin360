@@ -10,7 +10,7 @@ export default function InformesPage() {
         ← Dashboard
       </Link>
 
-      <h1 className=text-3xl font-bold mt-4 mb-6">
+      <h1 className="text-3xl font-bold mt-4 mb-6">
         Informe de Gastos
       </h1>
     </main>
