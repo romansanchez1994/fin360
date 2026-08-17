@@ -246,8 +246,8 @@ export default async function Home() {
             )
           })}
             <div className="mt-4 text-right">
-              <Link>
-                /informes
+              <Link
+                href="/informes">
                   Ver todos los gastos →
               </Link>
             </div>
