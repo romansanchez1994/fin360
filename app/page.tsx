@@ -209,7 +209,7 @@ export default async function Home() {
                   </div>
 
                   <div className="font-medium">
-                    {gasto.descricption}
+                    {gasto.description}
                   </div>
                   
 
