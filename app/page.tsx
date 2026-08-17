@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { deleteExpense } from "./expenses/deleteExpense";
+export const dynamic = "force-dynamic";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
