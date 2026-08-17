@@ -27,7 +27,6 @@ export async function createExpense(
     subcategoryValue
       ? Number(subcategoryValue)
       : null;
-  );
 
   const result = await supabase
     .from("expenses")
@@ -41,10 +40,6 @@ export async function createExpense(
       category_id,
       subcategory_id,
     });
-  console.log("RESULT", result);
-  if (result.error){
-    throw new Error(result.error.message);
-  }
-  
+  console.log(result);
   redirect("/");
 }
