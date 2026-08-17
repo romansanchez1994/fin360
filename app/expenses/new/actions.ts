@@ -20,8 +20,13 @@ export async function createExpense(
     formData.get("category_id")
   );
 
-  const subcategory_id = Number(
-  formData.get("subcategory_id")
+  const subcategoryValue =
+    formData.get("subcategory_id"=);
+  
+  const subcategory_id = 
+    subcategoryValue
+      ? Number(subcategoryValue)
+      null;
   );
 
   const result = await supabase
