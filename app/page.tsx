@@ -198,7 +198,7 @@ export default async function Home() {
                 className={`flex  justify-between p-4 rounded-xl ${
                   index % 2 === 0
                     ? "bg-gray-50"
-                    : "bg-gray-100
+                    : "bg-gray-100"
                 }`}
               >
                 <div>
