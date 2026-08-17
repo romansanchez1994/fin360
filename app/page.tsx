@@ -49,26 +49,68 @@ export default async function Home() {
       <h1 className="text-4xl font-bold mb-8">
         🏠 {household?.name}
       </h1>
-
-      <div className="border rounded-xl p-4 mb-4">
-        <h2 className="text-gray-500">
-          Gasto total
-        </h2>
-
-        <p className="text-3xl font-bold">
+      <div
+        className="
+          mb-6
+          rounded-3xl
+          p-6
+          text-white
+          shadow-xl
+          bg-gradient-to-r
+          from-emerald-900
+          via-teal-900
+          to-slate-900
+        "
+      >
+        <p className="text-white/70 text-sm">
+          Resumen financiero
+        </p>
+      
+        <h2 className="text-5xl font-bold mt-3">
           {totalGastos.toFixed(2)} €
-        </p>
-      </div>
-
-            <div className="border rounded-xl p-4 mb-4">
-        <h2 className="text-gray-500">
-          Gastos registrados
         </h2>
-
-        <p className="text-3xl font-bold">
-          {numeroGastos}
+      
+        <p className="text-white/60 mt-2">
+          Gasto acumulado
         </p>
+      
+        <div className="border-t border-white/20 mt-6 pt-6">
+          <div className="grid grid-cols-3 gap-4 text-center">
+      
+            <div>
+              <p className="text-white/60 text-xs">
+                Ingresos
+              </p>
+      
+              <p className="text-green-400 font-bold text-lg">
+                0 €
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-white/60 text-xs">
+                Gastos
+              </p>
+      
+              <p className="text-red-400 font-bold text-lg">
+                {totalGastos.toFixed(2)} €
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-white/60 text-xs">
+                Movimientos
+              </p>
+      
+              <p className="font-bold text-lg">
+                {numeroGastos}
+              </p>
+            </div>
+      
+          </div>
+        </div>
       </div>
+      
 
       <Link
         href="/expenses/new"
