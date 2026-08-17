@@ -34,7 +34,7 @@ export default async function Home() {
         new Date(b.created_at).getTime() -
         new Date(a.created_at).getTime()
     )
-    .slice(0, 10) ?? [];
+    .slice(0, 6) ?? [];
 
   const totalGastos =
     expenses?.reduce(
@@ -198,9 +198,20 @@ export default async function Home() {
                 className="flex justify-between"
               >
                 <div>
-                  <div>
-                    {gasto.description}
+                  <div classNam="text-xs text-gray-500">
+                    {new Date(gasto.date).toLocaleDateString("es-ES",
+                                                             {
+                                                               day: "2-digit",
+                                                               month: "2-digit",
+                                                               year: "numeric",
+                                                             }
+                    )}
                   </div>
+
+                  <div className="font-medium">
+                    {gasto.descricption}
+                  </div>
+                  
 
                   <div className="text-xs text-gray-500">
                     {gasto.categories?.name}
