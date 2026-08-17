@@ -41,6 +41,10 @@ export async function createExpense(
       category_id,
       subcategory_id,
     });
-  console.log(result);
+  console.log("RESULT", result);
+  if (result.error){
+    throw new Error(result.error.message);
+  }
+  
   redirect("/");
 }
