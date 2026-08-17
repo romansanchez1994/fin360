@@ -188,14 +188,18 @@ export default async function Home() {
   </h2>
 
         <div className="space-y-2">
-          {ultimosGastos.map((gasto) => {
+          {ultimosGastos.map((gasto, index) => {
             const deleteExpenseWithId =
               deleteExpense.bind(null,gasto.id);
             
             return (
               <div
                 key={gasto.id}
-                className="flex justify-between"
+                className={`flex  justify-between p-4 rounded-xl ${
+                  index % 2 === 0
+                    ? "bg-gray-50"
+                    : "bg-gray-100
+                }`}
               >
                 <div>
                   <div className="text-xs text-gray-500">
