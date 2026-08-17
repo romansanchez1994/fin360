@@ -43,7 +43,29 @@ export default async function Home() {
     ) ?? 0;
 
   const numeroGastos = expenses?.length ?? 0;
-
+  const gastosPorCategoria =
+    Object.values(
+      (expenses ?? []).reduce(
+        (acc: any, gasto: any) => {
+          const nombre =
+            gasto.categories?.name ?? "Sin categoría";
+  
+          if (!acc[nombre]) {
+            acc[nombre] = {
+              name: nombre,
+              total: 0,
+            };
+          }
+  
+          acc[nombre].total += Number(
+            gasto.amount
+          );
+  
+          return acc;
+        },
+        {}
+      )
+  );
   return (
     <main className="p-6 max-w-md mx-auto">
       <h1 className="text-4xl font-bold mb-8">
@@ -110,7 +132,35 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      <div className="border rounded-3xl p-5 mb-6">
+        <h2 className="font-semibold mb-4">
+          Gastos por categoría
+        </h2>
       
+        <div className="space-y-3">
+          {gastosPorCategoria.map(
+            (categoria: any) => (
+              <div
+                key={categoria.name}
+                className="
+                  flex
+                  justify-between
+                  items-center
+                "
+              >
+                <span>
+                  {categoria.name}
+                </span>
+      
+                <span className="font-semibold">
+                  {categoria.total.toFixed(2)} €
+                </span>
+              </div>
+            )
+          )}
+        </div>
+      </div>
 
       <Link
         href="/expenses/new"
