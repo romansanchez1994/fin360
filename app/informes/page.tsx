@@ -48,10 +48,7 @@ export default async function InformesPage({
   const filteredSubcategories =
     subcategories?.filter(
       (subcat) =>
-        subcat.category_id ===
-        categories?.find(
-          (cat) => cat.name === category
-        )?.id
+        subcat.category_id === category
       ) ?? [];
 
   const search =
@@ -112,11 +109,12 @@ export default async function InformesPage({
           <option value="">
             Todas las categorias
           </option>
-            {filteredSubcategories.map((subcat) => (
+            {categories.map((cat) => (
               <option
-                key={subcat.id}
-                value={subcat.name}
+                key={cat.id}
+                value={cat.name}
               >
+                {cat.name}
               </option>
         ))}
         </select>
