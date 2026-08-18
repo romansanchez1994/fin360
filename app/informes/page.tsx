@@ -50,9 +50,7 @@ export default async function InformesPage({
       
       <form className="mb-6">
         <input
-          type="text"
-          name="search"
-          defaultValue={search}
+          type="search"
           placeholder="Buscar gasto..."
           className="
             w-full
@@ -63,6 +61,12 @@ export default async function InformesPage({
             text-black
           "
         />
+        <button
+          type="submit"
+          className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg"
+        >
+          Buscar
+        </button>
       </form>
 
       <div className="space-y-3">
