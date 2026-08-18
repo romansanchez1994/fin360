@@ -24,11 +24,19 @@ export default async function InformesPage({
       )
     `)
     .eq("household_id", HOUSEHOLD_ID);
+  
   const { data: categories } = await supabase
     .from("categories")
     .select("*")
     .order("name");
+  
+  const { data: subcategories } = await supbase
+    .from("subcategories")
+    .select("*")
+    .order("name");
+  
   const params = await searchParams;
+  
   const category =
     params.category ?? "";
 
