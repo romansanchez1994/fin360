@@ -60,27 +60,27 @@ export default async function InformesPage({
         <select
           name="category"
           defaultValue={category}
-          className=
+          className="
             w-full
             p-3
-            rounder-xl
+            rounded-xl
             border
             border-gray-300
             bg-zinc-900
             text-white
             mb-3"
         >
-        <option value="">
-          Todas las categorias
-        </option>
-        {categories?.map((cat) => (
-          <option
-            key={cat.id}
-            value={cat.name}
-          >
-            {cat.name}
+          <option value="">
+            Todas las categorias
           </option>
-        )}
+            {categories?.map((cat) => (
+              <option
+                key={cat.id}
+                value={cat.name}
+              >
+                {cat.name}
+              </option>
+        ))}
         </select>
       
         <input
