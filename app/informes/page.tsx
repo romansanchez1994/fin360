@@ -34,7 +34,9 @@ export default async function InformesPage() {
         ← Dashboard
       </Link>
 
-      <h1 className="text>
+      <h1 className="text-3xl font-bold mt-4 mb-6">
+        Informe de gastos
+      </h1>
 
       <div className="space-y-3">
         {gastos.map((gasto, index) => (
