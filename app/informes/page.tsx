@@ -52,6 +52,7 @@ export default async function InformesPage({
         <input
           type="text"
           name="search"
+          defaultValue={search}
           placeholder="Buscar gasto..."
           className="
             w-full
