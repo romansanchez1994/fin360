@@ -30,7 +30,7 @@ export default async function InformesPage({
     .select("*")
     .order("name");
   
-  const { data: subcategories } = await supbase
+  const { data: subcategories } = await supabase
     .from("subcategories")
     .select("*")
     .order("name");
