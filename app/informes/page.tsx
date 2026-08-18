@@ -29,11 +29,13 @@ export default async function InformesPage({
     params.search?.toLowerCase() ?? "";
   
   const gastos =
-    expenses?.sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() -
-        new Date(a.created_at).getTime()
-    ) ?? [];
+    expenses
+      ?.filter((gasto)=> gasto.description?.toLowerCase().includes(search))
+      ?.sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() -
+          new Date(a.created_at).getTime()
+      ) ?? [];
 
   return (
     <main className="p-6 max-w-md mx-auto">
