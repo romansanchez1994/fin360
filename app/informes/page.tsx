@@ -30,10 +30,7 @@ export default async function InformesPage({
     .from("categories")
     .select("*")
     .order("name");
-  <p className="text-white">
-    Categorías cargadas: {categories?.length ?? 0}
-  </p>
-
+  
   const { data: subcategories } = await supabase
     .from("subcategories")
     .select("*")
@@ -118,7 +115,9 @@ export default async function InformesPage({
               </option>
         ))}
         </select>
-      
+        <p className="text-white">
+          Categoría seleccionada: {category}
+        </p>
         <input
           type="search"
           name="search"
