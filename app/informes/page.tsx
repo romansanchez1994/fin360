@@ -65,12 +65,7 @@ export default async function InformesPage({
   
         const matchesCategory =
           !category ||
-          gasto.categories?.name
-            ?.toLowerCase()
-            .trim() ===
-          category
-            .toLowerCase()
-            .trim();
+          gasto.category_id === category;
   
         return (
           matchesSearch &&
