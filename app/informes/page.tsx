@@ -10,6 +10,7 @@ export default async function InformesPage({
   searchParams: Promise<{
     search?: string;
     category?: string;
+    subcategory?: string;
   }>;
 }) {
   const { data: expenses } = await supabase
@@ -38,7 +39,17 @@ export default async function InformesPage({
   const params = await searchParams;
   
   const category =
-    params.category ?? "";
+    Number(params.category) || 0;
+  const subcategory =
+    params.subcategory ?? "";
+  const filteredSubcategories =
+    subcategories?.filter(
+      (subcat) =>
+        subcat.category_id ===
+        categories?.find(
+          (cat) => cat.name === category
+        )?.id
+      ) ?? [];
 
   const search =
     params.search?.toLowerCase() ?? "";
@@ -103,12 +114,9 @@ export default async function InformesPage({
           <option value="">
             Todas las categorias
           </option>
-            {categories?.map((cat) => (
-              <option
-                key={cat.id}
-                value={cat.name}
+            {filteredSubcategories.map((subcat) => (
               >
-                {cat.name}
+                {subcat.name}
               </option>
         ))}
         </select>
