@@ -27,17 +27,17 @@ export default async function InformesPage() {
 
   return (
     <main className="p-6 max-w-md mx-auto">
-
       <Link
         href="/"
-        className=" <h1 className="text-3xl font-bold mt-4 mb-6">
-        Informe de gastos
-      </h1>
+        className="text-blue-400"
+      >
+        ← Dashboard
+      </Link>
+
+      <h1 className="text>
 
       <div className="space-y-3">
-
         {gastos.map((gasto, index) => (
-
           <div
             key={gasto.id}
             className={`p-4 rounded-2xl ${
@@ -46,7 +46,6 @@ export default async function InformesPage() {
                 : "bg-zinc-800"
             }`}
           >
-
             <div className="text-xs text-gray-400">
               {new Date(
                 gasto.date
@@ -54,9 +53,7 @@ export default async function InformesPage() {
             </div>
 
             <div className="flex justify-between mt-1">
-
               <div>
-
                 <div className="font-medium text-white">
                   {gasto.description}
                 </div>
@@ -67,21 +64,16 @@ export default async function InformesPage() {
                     ? ` · ${gasto.subcategories.name}`
                     : ""}
                 </div>
-
               </div>
 
               <span className="font-semibold text-white">
                 {Number(gasto.amount).toFixed(2)} €
               </span>
-
             </div>
-
           </div>
-
         ))}
-
       </div>
-
     </main>
   );
 }
+``
