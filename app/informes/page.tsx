@@ -51,6 +51,7 @@ export default async function InformesPage({
       <form className="mb-6">
         <input
           type="search"
+          name="search"
           placeholder="Buscar gasto..."
           className="
             w-full
@@ -58,7 +59,9 @@ export default async function InformesPage({
             rounded-xl
             border
             border-gray-300
-            text-black
+            bg-zinc-900
+            text-white
+            placeholder:text-gray-500
           "
         />
         <button
