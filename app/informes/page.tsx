@@ -9,6 +9,7 @@ export default async function InformesPage({
 }: {
   searchParams: Promise<{
     search?: string;
+    category?: string;
   }>;
 }) {
   const { data: expenses } = await supabase
