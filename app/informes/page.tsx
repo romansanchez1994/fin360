@@ -30,7 +30,10 @@ export default async function InformesPage({
     .from("categories")
     .select("*")
     .order("name");
-  
+  <p className="text-white">
+    Categorías cargadas: {categories?.length ?? 0}
+  </p>
+
   const { data: subcategories } = await supabase
     .from("subcategories")
     .select("*")
