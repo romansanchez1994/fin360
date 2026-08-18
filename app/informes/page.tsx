@@ -37,8 +37,24 @@ export default async function InformesPage({
   
   const gastos =
     expenses
-      ?.filter((gasto)=> gasto.description?.toLowerCase().includes(search))
-      ?.sort(
+      ?.filter((gasto) => {
+  
+        const matchesSearch =
+          gasto.description
+            ?.toLowerCase()
+            .includes(search);
+  
+        const matchesCategory =
+          !category ||
+          gasto.categories?.name === category;
+  
+        return (
+          matchesSearch &&
+          matchesCategory
+        );
+  
+      })
+      .sort(
         (a, b) =>
           new Date(b.created_at).getTime() -
           new Date(a.created_at).getTime()
