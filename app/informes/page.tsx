@@ -25,50 +25,61 @@ export default async function InformesPage({
       )
     `)
     .eq("household_id", HOUSEHOLD_ID);
-  
+
   const { data: categories } = await supabase
     .from("categories")
     .select("*")
     .order("name");
-  
+
   const { data: subcategories } = await supabase
     .from("subcategories")
     .select("*")
     .order("name");
-  
+
   const params = await searchParams;
-  
-  const category =
-    Number(params.category) || 0;
-  const subcategory =
-    params.subcategory ?? "";
-  const filteredSubcategories =
-    subcategories?.filter(
-      (subcat) =>
-        subcat.category_id === category
-      ) ?? [];
 
   const search =
     params.search?.toLowerCase() ?? "";
-  
+
+  const category =
+    params.category ?? "";
+
+  const subcategory =
+    params.subcategory ?? "";
+
+  const selectedCategoryId =
+    categories?.find(
+      (cat) => cat.name === category
+    )?.id;
+
+  const filteredSubcategories =
+    subcategories?.filter(
+      (subcat) =>
+        subcat.category_id === selectedCategoryId
+    ) ?? [];
+
   const gastos =
     expenses
       ?.filter((gasto) => {
-  
         const matchesSearch =
           gasto.description
             ?.toLowerCase()
             .includes(search);
-  
+
         const matchesCategory =
           !category ||
-          gasto.category_id === category;
-  
+          gasto.categories?.name === category;
+
+        const matchesSubcategory =
+          !subcategory ||
+          gasto.subcategories?.name ===
+            subcategory;
+
         return (
           matchesSearch &&
-          matchesCategory
+          matchesCategory &&
+          matchesSubcategory
         );
-  
       })
       .sort(
         (a, b) =>
@@ -81,14 +92,10 @@ export default async function InformesPage({
       <Link
         href="/"
         className="text-blue-400"
-      >
-        ← Dashboard
-      </Link>
-
-      <h1 className="text-3xl font-bold mt-4 mb-6">
+      >xl font-bold mt-4 mb-6">
         Informe de gastos
       </h1>
-      
+
       <form className="mb-6">
         <select
           name="category"
@@ -101,26 +108,57 @@ export default async function InformesPage({
             border-gray-300
             bg-zinc-900
             text-white
-            mb-3"
+            mb-3
+          "
         >
           <option value="">
-            Todas las categorias
+            Todas las categorías
           </option>
-            {(categories ?? []).map((cat) => (
-              <option
-                key={cat.id}
-                value={cat.name}
-              >
-                {cat.name}
-              </option>
-        ))}
+
+          {(categories ?? []).map((cat) => (
+            <option
+              key={cat.id}
+              value={cat.name}
+            >
+              {cat.name}
+            </option>
+          ))}
         </select>
-        <p className="text-white">
-          Categoría seleccionada: {category}
-        </p>
+
+        {filteredSubcategories.length > 0 && (
+          <select
+            name="subcategory"
+            defaultValue={subcategory}
+            className="
+              w-full
+              p-3
+              rounded-xl
+              border
+              border-gray-300
+              bg-zinc-900
+              text-white
+              mb-3
+            "
+          >
+            <option value="">
+              Todas las subcategorías
+            </option>
+
+            {filteredSubcategories.map((subcat) => (
+              <option
+                key={subcat.id}
+                value={subcat.name}
+              >
+                {subcat.name}
+              </option>
+            ))}
+          </select>
+        )}
+
         <input
           type="search"
           name="search"
+          defaultValue={search}
           placeholder="Buscar gasto..."
           className="
             w-full
@@ -133,9 +171,17 @@ export default async function InformesPage({
             placeholder:text-gray-500
           "
         />
+
         <button
           type="submit"
-          className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg"
+          className="
+            mt-2
+            bg-blue-600
+            text-white
+            px-4
+            py-2
+            rounded-lg
+          "
         >
           Buscar
         </button>
@@ -181,4 +227,3 @@ export default async function InformesPage({
     </main>
   );
 }
-
