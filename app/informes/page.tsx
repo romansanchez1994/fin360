@@ -109,7 +109,7 @@ export default async function InformesPage({
           <option value="">
             Todas las categorias
           </option>
-            {categories.map((cat) => (
+            {(categories ?? []).map((cat) => (
               <option
                 key={cat.id}
                 value={cat.name}
