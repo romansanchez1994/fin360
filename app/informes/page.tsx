@@ -92,10 +92,12 @@ export default async function InformesPage({
       <Link
         href="/"
         className="text-blue-400"
-      >xl font-bold mt-4 mb-6">
+        >
+        ← Dashboard
+      </Link>
+      <h1 className="text-3xl font-bold mt-4 mb-6">
         Informe de gastos
       </h1>
-
       <form className="mb-6">
         <select
           name="category"
