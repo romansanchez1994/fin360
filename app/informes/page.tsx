@@ -115,8 +115,10 @@ export default async function InformesPage({
             Todas las categorias
           </option>
             {filteredSubcategories.map((subcat) => (
+              <option>
+                key={subcat.id}
+                value={subcat.name
               >
-                {subcat.name}
               </option>
         ))}
         </select>
