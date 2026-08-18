@@ -4,7 +4,13 @@ import { supabase } from "@/lib/supabase/client";
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
 
-export default async function InformesPage() {
+export default async function InformesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    search?: string;
+  }>;
+}) {
   const { data: expenses } = await supabase
     .from("expenses")
     .select(`
@@ -17,7 +23,11 @@ export default async function InformesPage() {
       )
     `)
     .eq("household_id", HOUSEHOLD_ID);
+  const params = await searchParams;
 
+  const search =
+    params.search?.toLowerCase() ?? "";
+  
   const gastos =
     expenses?.sort(
       (a, b) =>
