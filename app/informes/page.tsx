@@ -23,7 +23,13 @@ export default async function InformesPage({
       )
     `)
     .eq("household_id", HOUSEHOLD_ID);
+  const { data: categories } = await supabase
+    .from("categories")
+    .select("*")
+    .order("name");
   const params = await searchParams;
+  const category =
+    params.category ?? "";
 
   const search =
     params.search?.toLowerCase() ?? "";
@@ -51,6 +57,32 @@ export default async function InformesPage({
       </h1>
       
       <form className="mb-6">
+        <select
+          name="category"
+          defaultValue={category}
+          className=
+            w-full
+            p-3
+            rounder-xl
+            border
+            border-gray-300
+            bg-zinc-900
+            text-white
+            mb-3"
+        >
+        <option value="">
+          Todas las categorias
+        </option>
+        {categories?.map((cat) => (
+          <option
+            key={cat.id}
+            value={cat.name}
+          >
+            {cat.name}
+          </option>
+        )}
+        </select>
+      
         <input
           type="search"
           name="search"
