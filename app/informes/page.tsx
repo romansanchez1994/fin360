@@ -37,6 +37,22 @@ export default async function InformesPage() {
       <h1 className="text-3xl font-bold mt-4 mb-6">
         Informe de gastos
       </h1>
+      
+      <form className="mb-6">
+        <input
+          type="text"
+          name="search"
+          placeholder="Buscar gasto..."
+          className="
+            w-full
+            p-3
+            rounded-xl
+            border
+            border-gray-300
+            text-black
+          "
+        />
+      </form>
 
       <div className="space-y-3">
         {gastos.map((gasto, index) => (
