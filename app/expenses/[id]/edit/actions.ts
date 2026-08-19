@@ -37,7 +37,7 @@ export async function updateExpense(
       description,
       date,
       category_id,
-      subcategory_id;
+      subcategory_id,
     })
     .eq("id", id);
     .select();
