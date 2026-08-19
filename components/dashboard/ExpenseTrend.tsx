@@ -1,9 +1,18 @@
 "use client";
 
-export default function ExpenseTrend() {
+type Expense = {
+  amount: number;
+  date: string;
+};
+
+export default function ExpenseTrend({
+  expenses,
+}: {
+  expenses: Expense[];
+}) {
   return (
-    <div>
-      Trend
+    <div className="my-6 text-white/60">
+      Gastos recibidos: {expenses.length}
     </div>
   );
 }
