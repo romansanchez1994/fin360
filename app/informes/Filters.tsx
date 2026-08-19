@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 
 type Category = {
   id: string;
@@ -23,13 +24,27 @@ export default function Filters({
   selectedSubcategory: string;
   search: string;
 }) {
+  const [searchText, setSearchText] =
+    useState(search);
+    useEffect(() => {
+      const timeout = setTimeout(() => {
+        const form =
+          document.getElementById(
+            "filters-form"
+          ) as HTMLFormElement | null;
+    
+        form?.requestSubmit();
+      }, 500);
+    
+      return () => clearTimeout(timeout);
+    }, [searchText]);
   return (
     <div className="mb-6">
       <p className="mb-2 text-gray-400">
         Filtros
       </p>
 
-      <form>
+      <form id="filters-form">
         <select
           name="category"
           defaultValue={selectedCategory}
