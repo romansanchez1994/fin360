@@ -58,7 +58,18 @@ export default async function EditExpensePage({
                 className="w-full border rounded-lg p-3"
             />
         </div>
-
+        <div>
+          <label className="block mb-1">
+              Fecha
+          </label>
+      
+          <input
+              name="date"
+              type="date"
+              defaultValue={expense?.date}
+              className="w-full border rounded-lg p-3"
+          />
+        </div>
         <button
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg"
