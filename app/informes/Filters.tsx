@@ -26,7 +26,7 @@ export default function Filters({
 }) {
   const [searchText, setSearchText] =
     useState(search);
-    useEffect(() => {
+    /*useEffect(() => {
       const timeout = setTimeout(() => {
         const form =
           document.getElementById(
@@ -37,7 +37,7 @@ export default function Filters({
       }, 500);
     
       return () => clearTimeout(timeout);
-    }, [searchText]);
+    }, [searchText]);*/
   return (
     <div className="mb-6">
       <p className="mb-2 text-gray-400">
