@@ -7,10 +7,14 @@ type Category = {
 
 export default function Filters({
   categories,
+  subcategories,
   selectedCategory,
+  selectedSubcategory
 }: {
   categories: Category[];
+  subcategories: Subcategory[];
   selectedCategory: string;
+  selectedSubcategory: string;
 }) {
   return (
     <div className="mb-6">
