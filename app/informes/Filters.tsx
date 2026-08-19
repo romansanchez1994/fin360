@@ -7,8 +7,10 @@ type Category = {
 
 export default function Filters({
   categories,
+  selectedCategory,
 }: {
   categories: Category[];
+  selectedCategory: string,
 }) {
   return (
     <div className="mb-6">
@@ -19,6 +21,7 @@ export default function Filters({
       <form>
         <select
           name="category"
+          defaultValue={selectedCategory}
           onChange={(e) =>
             e.currentTarget.form?.requestSubmit()
           }
