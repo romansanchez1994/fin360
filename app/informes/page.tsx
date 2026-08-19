@@ -104,6 +104,7 @@ export default async function InformesPage({
         subcategories={filteredSubcategories}
         selectedCategory={category}
         selectedSubcategory={subcategory}
+        search={search}
       />
       <form className="mb-6">
         <input
