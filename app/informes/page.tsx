@@ -106,64 +106,6 @@ export default async function InformesPage({
         selectedSubcategory={subcategory}
       />
       <form className="mb-6">
-        <select
-          name="category"
-          defaultValue={category}
-          className="
-            w-full
-            p-3
-            rounded-xl
-            border
-            border-gray-300
-            bg-zinc-900
-            text-white
-            mb-3
-          "
-        >
-          <option value="">
-            Todas las categorías
-          </option>
-
-          {(categories ?? []).map((cat) => (
-            <option
-              key={cat.id}
-              value={cat.name}
-            >
-              {cat.name}
-            </option>
-          ))}
-        </select>
-
-        {filteredSubcategories.length > 0 && (
-          <select
-            name="subcategory"
-            defaultValue={subcategory}
-            className="
-              w-full
-              p-3
-              rounded-xl
-              border
-              border-gray-300
-              bg-zinc-900
-              text-white
-              mb-3
-            "
-          >
-            <option value="">
-              Todas las subcategorías
-            </option>
-
-            {filteredSubcategories.map((subcat) => (
-              <option
-                key={subcat.id}
-                value={subcat.name}
-              >
-                {subcat.name}
-              </option>
-            ))}
-          </select>
-        )}
-
         <input
           type="search"
           name="search"
