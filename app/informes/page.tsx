@@ -12,6 +12,7 @@ export default async function InformesPage({
     search?: string;
     category?: string;
     subcategory?: string;
+    sort?: string;
   }>;
 }) {
   const { data: expenses } = await supabase
@@ -48,6 +49,9 @@ export default async function InformesPage({
   const subcategory =
     params.subcategory ?? "";
 
+  const sort =
+    params.sort ?? "recentes";
+  
   const selectedCategoryId =
     categories?.find(
       (cat) => cat.name === category
@@ -105,6 +109,7 @@ export default async function InformesPage({
         selectedCategory={category}
         selectedSubcategory={subcategory}
         search={search}
+        sort={sort}
       />
       <form className="mb-6">
         
