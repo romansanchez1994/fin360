@@ -18,6 +18,9 @@ export default function Filters({
 
       <form>
         <select
+          onChange={(e) =>
+            e.currentTarget.form?requestSubmit()
+          }
           className="
             w-full
             p-3
