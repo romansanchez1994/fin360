@@ -101,7 +101,9 @@ export default async function InformesPage({
       </h1>
       <Filters 
         categories={categories ?? []}
+        subcategories={filteredSubcategories}
         selectedCategory={category}
+        selectedSubcategory={subcategory}
       />
       <form className="mb-6">
         <select
