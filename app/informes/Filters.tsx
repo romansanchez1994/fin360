@@ -9,7 +9,7 @@ export default function Filters({
   categories,
   subcategories,
   selectedCategory,
-  selectedSubcategory
+  selectedSubcategory,
 }: {
   categories: Category[];
   subcategories: Subcategory[];
