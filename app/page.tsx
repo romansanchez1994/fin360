@@ -1,4 +1,5 @@
 import CategoryDonut from "@/components/dashboard/CategoryDonut";
+import ExpenseTrend from "@/components/dashboard/ExpenseTrend";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { deleteExpense } from "./expenses/deleteExpense";
