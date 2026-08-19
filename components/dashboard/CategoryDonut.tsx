@@ -31,6 +31,9 @@ export default function CategoryDonut({
     (sum, item) => sum + item.total,
     0
   );
+  const sortedData = [...data].sort(
+    (a, b) => b.total - a.total
+  );
   
   return (
     <div className="border rounded-3xl p-5 mb-6">
@@ -77,6 +80,41 @@ export default function CategoryDonut({
           Total
         </span>
         </div>
+      </div>
+
+      <div className="space-y-3">
+        {sortedData.map(
+          (categoria, index) => (
+            <div
+              key={categoria.name}
+              className="
+                flex
+                justify-between
+                items-center
+              "
+            >
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-3 h-3 rounded-full"
+                  style={{
+                    backgroundColor:
+                      COLORS[
+                        index % COLORS.length
+                      ],
+                  }}
+                />
+      
+                <span>
+                  {categoria.name}
+                </span>
+              </div>
+      
+              <span className="font-semibold">
+                {categoria.total.toFixed(2)} €
+              </span>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
