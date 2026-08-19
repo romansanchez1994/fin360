@@ -107,36 +107,7 @@ export default async function InformesPage({
         search={search}
       />
       <form className="mb-6">
-        <input
-          type="search"
-          name="search"
-          defaultValue={search}
-          placeholder="Buscar gasto..."
-          className="
-            w-full
-            p-3
-            rounded-xl
-            border
-            border-gray-300
-            bg-zinc-900
-            text-white
-            placeholder:text-gray-500
-          "
-        />
-
-        <button
-          type="submit"
-          className="
-            mt-2
-            bg-blue-600
-            text-white
-            px-4
-            py-2
-            rounded-lg
-          "
-        >
-          Buscar
-        </button>
+        
       </form>
 
       <div className="space-y-3">
