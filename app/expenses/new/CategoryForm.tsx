@@ -52,7 +52,23 @@ export default function CategoryForm({
           required
         />
       </div>
-
+      <div>
+        <label className="block mb-1">
+          Fecha
+        </label>
+      
+        <input
+          name="date"
+          type="date"
+          defaultValue={
+            new Date()
+              .toISOString()
+              .split("T")[0]
+          }
+          className="w-full border rounded-lg p-3"
+          required
+        />
+      </div>
          <div>
             <label className="block mb-1">
               Categoría
