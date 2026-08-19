@@ -15,7 +15,9 @@ export async function createExpense(
   const description = String(
     formData.get("description")
   );
-
+  const date = String(
+    formData.get("date")
+  );
   const category_id = Number(
     formData.get("category_id")
   );
@@ -32,9 +34,7 @@ export async function createExpense(
     .from("expenses")
     .insert({
       household_id: HOUSEHOLD_ID,
-      date: new Date()
-        .toISOString()
-        .split("T")[0],
+      date,
       amount,
       description,
       category_id,
