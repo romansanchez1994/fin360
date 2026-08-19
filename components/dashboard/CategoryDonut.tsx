@@ -40,16 +40,16 @@ export default function CategoryDonut({
       <h2 className="font-semibold mb-4">
         Gastos por categoría
       </h2>
-    <div className="relative flex justify-center mb-6">
-      <PieChart width={320} height={320}>
+    <div className="relative flex justify-center mb-3">
+      <PieChart width={380} height={380}>
         <Pie
           data={sortedData}
           dataKey="total"
           nameKey="name"
           cx="50%"
           cy="50%"
-          innerRadius={60}
-          outerRadius={90}
+          innerRadius={80}
+          outerRadius={130}
         >
           {sortedData.map((_, index) => (
             <Cell
