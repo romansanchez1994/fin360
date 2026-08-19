@@ -1,6 +1,15 @@
 "use client";
 
-export default function Filters() {
+type Category = {
+  id: number;
+  name: string;
+};
+
+export default function Filters({
+  categories,
+}: {
+  categories: Category[];
+}) {
   return (
     <div className="mb-6">
       <p className="mb-2 text-gray-400">
@@ -23,6 +32,12 @@ export default function Filters() {
           <option>
             Todas las categorías
           </option>
+
+          {categories.map((cat) => (
+            <option key={cat.id}>
+              {cat.name}
+            </option>
+          ))}
         </select>
       </form>
     </div>
