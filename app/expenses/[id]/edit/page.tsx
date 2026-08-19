@@ -13,7 +13,15 @@ export default async function EditExpensePage({
         .select("*")
         .eq("id", id)
         .single();
-
+    const { data: categories } = await supabase
+      .from("categories")
+      .select("id, name")
+      .order("name");
+    
+    const { data: subcategories } = await supabase
+      .from("subcategories")
+      .select("*")
+      .order("name");
     const updateExpenseWithId =
         updateExpense.bind(null, id);
         
