@@ -90,6 +90,30 @@ export default async function EditExpensePage({
               ))}
           </select>
         </div>
+        <div>
+          <label className="block mb-1">
+              Subcategoría
+          </label>
+      
+          <select
+              name="subcategory_id"
+              defaultValue={expense?.subcategory_id ?? ""}
+              className="w-full border rounded-lg p-3"
+          >
+              <option value="">
+                  Sin subcategoría
+              </option>
+      
+              {subcategories?.map((subcategory) => (
+                  <option
+                      key={subcategory.id}
+                      value={subcategory.id}
+                  >
+                      {subcategory.name}
+                  </option>
+              ))}
+          </select>
+        </div>
         <button
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg"
