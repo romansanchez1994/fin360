@@ -5,6 +5,11 @@ type Category = {
   name: string;
 };
 
+type Subcategory = {
+  id: string
+  name: string
+};
+
 export default function Filters({
   categories,
   subcategories,
