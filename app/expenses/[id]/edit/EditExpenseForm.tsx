@@ -12,7 +12,7 @@ export default function EditExpenseForm({
   action: any[];
 }) {
   return (
-    <form <form
+    <form
       action={action}
       className="space-y-4"
     >
