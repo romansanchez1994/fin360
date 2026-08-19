@@ -181,7 +181,9 @@ export default async function Home() {
         >
           +
       </Link>
-  <CategoryDonut />
+  <CategoryDonut 
+    data={gastosPorCategoria}  
+  />
       <div className="border rounded-xl p-4 mb-4">
   <h2 className="text-gray-500 mb-3">
     Últimos gastos
