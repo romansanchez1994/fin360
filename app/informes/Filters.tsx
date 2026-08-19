@@ -10,7 +10,7 @@ export default function Filters({
   selectedCategory,
 }: {
   categories: Category[];
-  selectedCategory: string,
+  selectedCategory: string;
 }) {
   return (
     <div className="mb-6">
