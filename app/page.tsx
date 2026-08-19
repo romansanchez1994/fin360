@@ -215,15 +215,6 @@ export default async function Home() {
                       <button
                           type="submit"
                           className="text-red-400 text-sm"
-                          onClick={(e) => {
-                            if (
-                              !window.confirm(
-                                "¿Seguro quieres eliminar este gasto?"
-                                )
-                              ){
-                                e.preventDefault();
-                              }
-                          }}
                           >
                             🗑 Eliminar
                       </button>
