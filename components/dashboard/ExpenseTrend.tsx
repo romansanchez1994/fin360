@@ -1,5 +1,10 @@
 "use client";
 
+import {
+  LineChart,
+  Line,
+} from "recharts";
+
 type Expense = {
   amount: number;
   date: string;
@@ -29,12 +34,20 @@ export default function ExpenseTrend({
       }));
 
   return (
-    <div className="my-6 text-white/60 text-sm">
-      {JSON.stringify(
-        trendData.slice(0, 5),
-        null,
-        2
-      )}
-    </div>
+    <div className="my-6 flex justify-center">
+        <LineChart
+          width={500}
+          height={100}
+          data={trendData}
+        >
+          <Line
+            type="monotone"
+            dataKey="total"
+            stroke="#34d399"
+            strokeWidth={3}
+            dot={false}
+          />
+        </LineChart>
+      </div>
   );
 }
