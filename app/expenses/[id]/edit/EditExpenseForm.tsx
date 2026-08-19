@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 export default function EditExpenseForm({
   expense,
@@ -11,6 +12,16 @@ export default function EditExpenseForm({
   subcategories: any[];
   action: (formData: FormData) => Promise<void>;
 }) {
+  const [selectedCategory, setSelectedCategory] =
+    useState(
+      String(expense?.category_id ?? "")
+  );
+  const filteredSubcategories =
+    subcategories.filter(
+      (subcategory) =>
+        String(subcategory.category_id) ===
+        selectedCategory
+  );
   return (
     <form
       action={action}
@@ -64,7 +75,10 @@ export default function EditExpenseForm({
 
         <select
           name="category_id"
-          defaultValue={expense?.category_id}
+          value={selectedCategory}
+          onChange={(e) =>
+            setSelectedCategory(e.target.value)
+          }
           className="w-full border rounded-lg p-3"
         >
           {categories?.map((category) => (
@@ -94,7 +108,7 @@ export default function EditExpenseForm({
             Sin subcategoría
           </option>
 
-          {subcategories?.map(
+          {filteredSubcategories.map(
             (subcategory) => (
               <option
                 key={subcategory.id}
