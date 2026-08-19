@@ -62,7 +62,7 @@ export default function Filters({
             mb-3
           "
         >
-          <option>
+          <option value="">
             Todas las categorías
           </option>
 
