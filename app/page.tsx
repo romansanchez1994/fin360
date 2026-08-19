@@ -43,7 +43,10 @@ export default async function Home() {
     ) ?? 0;
 
   const numeroGastos = expenses?.length ?? 0;
-  const gastosPorCategoria =
+  const gastosPorCategoria: {
+    name: string;
+    total: number;
+  }[]=
     Object.values(
       (expenses ?? []).reduce(
         (acc: any, gasto: any) => {
