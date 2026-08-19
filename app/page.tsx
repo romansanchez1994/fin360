@@ -99,7 +99,9 @@ export default async function Home() {
         <p className="text-white/60 mt-2">
           Gasto acumulado
         </p>
-      
+        
+        <ExpenseTrend />
+        
         <div className="border-t border-white/20 mt-6 pt-6">
           <div className="grid grid-cols-3 gap-4 text-center">
       
