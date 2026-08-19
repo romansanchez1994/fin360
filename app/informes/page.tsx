@@ -100,7 +100,8 @@ export default async function InformesPage({
         Informe de gastos
       </h1>
       <Filters 
-        categories={categories ?? []}  
+        categories={categories ?? []}
+        selectedCategory={category}
       />
       <form className="mb-6">
         <select
