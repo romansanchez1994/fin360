@@ -129,7 +129,39 @@ export default function Filters({
             placeholder:text-gray-500
           "
         />
+        <select
+          name="sort"
+          defaultValue={sort}
+          onChange={(e) =>
+            e.currentTarget.form?.requestSubmit()
+          }
+          className="
+            w-full
+            p-3
+            rounded-xl
+            border
+            border-gray-300
+            bg-zinc-900
+            text-white
+            mt-3
+          "
+        >
+          <option value="recentes">
+            Más recientes
+          </option>
         
+          <option value="antiguos">
+            Más antiguos
+          </option>
+        
+          <option value="mayor">
+            Mayor importe
+          </option>
+        
+          <option value="menor">
+            Menor importe
+          </option>
+        </select>
       </form>
     </div>
   );
