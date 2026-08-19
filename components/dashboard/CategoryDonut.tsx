@@ -76,6 +76,7 @@ export default function CategoryDonut({
         <span className="text-sm text-gray-400">
           Total
         </span>
+        </div>
       </div>
     </div>
   );
