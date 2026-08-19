@@ -58,6 +58,38 @@ export default function Filters({
             </option>
           ))}
         </select>
+        {subcategories.length > 0 && (
+          <select
+            name="subcategory"
+            defaultValue={selectedSubcategory}
+            onChange={(e) =>
+              e.currentTarget.form?.requestSubmit()
+            }
+            className="
+              w-full
+              p-3
+              rounded-xl
+              border
+              border-gray-300
+              bg-zinc-900
+              text-white
+              mb-3
+            "
+          >
+            <option value="">
+              Todas las subcategorías
+            </option>
+        
+            {subcategories.map((subcat) => (
+              <option
+                key={subcat.id}
+                value={subcat.name}
+              >
+                {subcat.name}
+              </option>
+            ))}
+          </select>
+        )}
       </form>
     </div>
   );
