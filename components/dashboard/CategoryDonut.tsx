@@ -2,7 +2,7 @@
 
 import {
   PieChart,
-  //Pie,
+  Pie,
   //Cell,
   //ResponsiveContainer,
 } from "recharts";
@@ -28,7 +28,14 @@ export default function CategoryDonut({
 }) {
   return (
     <div className="border rounded-3xl p-5 mb-6">
-      TEST RECHARTS
+      <PieChart width={300} height={300}>
+        <Pie
+          data={data}
+          dataKey="total"
+          nameKey="name"
+        />
+
+      </PieChart>
     </div>
   );
 }
