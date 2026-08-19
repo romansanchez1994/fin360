@@ -111,11 +111,11 @@ export default function Filters({
         <input
           type="search"
           name="search"
-          defaultValue={search}
-          placeholder="Buscar gasto..."
+          value={searchText}
           onChange={(e) =>
-            e.currentTarget.form?.requestSubmit()
+            setSearchText(e.target.value)
           }
+          placeholder="Buscar gasto..."
           className="
             w-full
             p-3
