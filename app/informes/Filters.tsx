@@ -40,7 +40,7 @@ export default function Filters({
           {categories.map((cat) => (
             <option 
               key={cat.id}
-              valeu={cat.name}
+              value={cat.name}
             >
               {cat.name}
             </option>
