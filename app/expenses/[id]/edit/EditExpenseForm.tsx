@@ -4,13 +4,18 @@ export default function EditExpenseForm({
   expense,
   categories,
   subcategories,
+  action,
 }: {
   expense: any;
   categories: any[];
   subcategories: any[];
+  action: any[];
 }) {
   return (
-    <div className="space-y-4">
+    <form <form
+      action={action}
+      className="space-y-4"
+    >
 
       <div>
         <label className="block mb-1">
@@ -102,6 +107,13 @@ export default function EditExpenseForm({
         </select>
       </div>
 
-    </div>
+        <button
+      type="submit"
+      className="w-full bg-blue-600 text-white p-3 rounded-lg"
+    >
+      Guardar cambios
+    </button>
+    
+    </form>
   );
 }
