@@ -9,7 +9,7 @@ export default function EditExpenseForm({
   expense: any;
   categories: any[];
   subcategories: any[];
-  action: any[];
+  action: (formData: FormData) => Promise<void>;
 }) {
   return (
     <form
