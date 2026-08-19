@@ -212,12 +212,7 @@ export default async function Home() {
                         ✏️ Editar
                     </Link>
                     <form action={deleteExpenseWithId}>
-                      <button
-                          type="submit"
-                          className="text-red-400 text-sm"
-                          >
-                            🗑 Eliminar
-                      </button>
+                      <DeleteButton />
                     </form>
                   </div>
                 </div>
