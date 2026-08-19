@@ -86,11 +86,36 @@ export default async function InformesPage({
           matchesSubcategory
         );
       })
-      .sort(
-        (a, b) =>
+      .sort((a, b) => {
+
+        if (sort === "antiguos") {
+          return (
+            new Date(a.created_at).getTime() -
+            new Date(b.created_at).getTime()
+          );
+        }
+      
+        if (sort === "mayor") {
+          return (
+            Number(b.amount) -
+            Number(a.amount)
+          );
+        }
+      
+        if (sort === "menor") {
+          return (
+            Number(a.amount) -
+            Number(b.amount)
+          );
+        }
+      
+        return (
           new Date(b.created_at).getTime() -
           new Date(a.created_at).getTime()
-      ) ?? [];
+        );
+      
+      })
+
 
   return (
     <main className="p-6 max-w-md mx-auto">
