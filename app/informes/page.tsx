@@ -1,3 +1,4 @@
+import Filters from "./Filters";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 
@@ -98,6 +99,7 @@ export default async function InformesPage({
       <h1 className="text-3xl font-bold mt-4 mb-6">
         Informe de gastos
       </h1>
+      <Filters />
       <form className="mb-6">
         <select
           name="category"
