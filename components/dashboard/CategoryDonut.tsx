@@ -3,7 +3,7 @@
 import {
   PieChart,
   Pie,
-  //Cell,
+  Cell,
   //ResponsiveContainer,
 } from "recharts";
 
@@ -33,8 +33,18 @@ export default function CategoryDonut({
           data={data}
           dataKey="total"
           nameKey="name"
-        />
-
+          innerRadius={60}
+          outerRadius={90}
+        >
+          {data.map((_, index) => (
+            <Cell
+              key={index}
+              fill={
+                COLORS[index % COLORS.length]
+              }
+            />
+          ))}
+        </Pie>
       </PieChart>
     </div>
   );
