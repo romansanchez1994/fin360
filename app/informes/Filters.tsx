@@ -17,12 +17,14 @@ export default function Filters({
   selectedCategory,
   selectedSubcategory,
   search,
+  sort,
 }: {
   categories: Category[];
   subcategories: Subcategory[];
   selectedCategory: string;
   selectedSubcategory: string;
   search: string;
+  sort: string;
 }) {
   const [searchText, setSearchText] =
     useState(search);
