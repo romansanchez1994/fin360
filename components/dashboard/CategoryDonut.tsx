@@ -2,9 +2,9 @@
 
 import {
   PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
+  //Pie,
+  //Cell,
+  //ResponsiveContainer,
 } from "recharts";
 
 type CategoryData = {
