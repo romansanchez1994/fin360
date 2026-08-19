@@ -40,7 +40,8 @@ export async function updateExpense(
       subcategory_id;
     })
     .eq("id", id);
-  .select();
+    .select();
+    
   console.log(result);
 
   redirect("/");
