@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase/client";
 import { updateExpense } from "./actions";
+import EditExpenseForm from "./EditExpenseForm";
 
 export default async function EditExpensePage({
   params,
