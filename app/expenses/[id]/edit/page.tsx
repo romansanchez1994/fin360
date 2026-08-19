@@ -36,6 +36,7 @@ export default async function EditExpensePage({
         expense={expense}
         categories={categories ?? []}
         subcategories={subcategories ?? []}
+        action={updateExpenseWithId}
       />
       
     </main>
