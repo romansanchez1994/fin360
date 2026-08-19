@@ -43,7 +43,7 @@ export default function CategoryDonut({
     <div className="relative flex justify-center mb-6">
       <PieChart width={320} height={320}>
         <Pie
-          data={data}
+          data={sortedData}
           dataKey="total"
           nameKey="name"
           cx="50%"
@@ -51,7 +51,7 @@ export default function CategoryDonut({
           innerRadius={60}
           outerRadius={90}
         >
-          {data.map((_, index) => (
+          {sortedData.map((_, index) => (
             <Cell
               key={index}
               fill={
