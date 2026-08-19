@@ -15,11 +15,13 @@ export default function Filters({
   subcategories,
   selectedCategory,
   selectedSubcategory,
+  search,
 }: {
   categories: Category[];
   subcategories: Subcategory[];
   selectedCategory: string;
   selectedSubcategory: string;
+  search: string;
 }) {
   return (
     <div className="mb-6">
@@ -90,6 +92,27 @@ export default function Filters({
             ))}
           </select>
         )}
+
+        <input
+          type="search"
+          name="search"
+          defaultValue={search}
+          placeholder="Buscar gasto..."
+          onChange={(e) =>
+            e.currentTarget.form?.requestSubmit()
+          }
+          className="
+            w-full
+            p-3
+            rounded-xl
+            border
+            border-gray-300
+            bg-zinc-900
+            text-white
+            placeholder:text-gray-500
+          "
+        />
+        
       </form>
     </div>
   );
