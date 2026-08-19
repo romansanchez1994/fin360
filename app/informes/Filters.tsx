@@ -18,6 +18,7 @@ export default function Filters({
 
       <form>
         <select
+          name="category"
           onChange={(e) =>
             e.currentTarget.form?.requestSubmit()
           }
@@ -37,7 +38,10 @@ export default function Filters({
           </option>
 
           {categories.map((cat) => (
-            <option key={cat.id}>
+            <option 
+              key={cat.id}
+              valeu={cat.name}
+            >
               {cat.name}
             </option>
           ))}
