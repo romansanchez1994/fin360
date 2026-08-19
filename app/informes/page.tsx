@@ -114,7 +114,7 @@ export default async function InformesPage({
           new Date(a.created_at).getTime()
         );
       
-      })
+      }) ?? [];
 
 
   return (
@@ -141,7 +141,7 @@ export default async function InformesPage({
       </form>
 
       <div className="space-y-3">
-        {gastos.map((gasto, index) => (
+        {(gastos ?? []).map((gasto, index) => (
           <div
             key={gasto.id}
             className={`p-4 rounded-2xl ${
