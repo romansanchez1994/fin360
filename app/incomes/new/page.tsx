@@ -1,8 +1,14 @@
 import { createIncome } from "./actions";
+import Link from "next/link";
 
 export default function NewIncomePage() {
   return (
     <main className="max-w-md mx-auto p-6">
+      <Link
+        href="/"
+        className="text-blue-600 mb-4 inline-block">
+        ← Dashboard
+      </Link>
       <h1 className="text-3xl font-bold mb-6">
         Nuevo ingreso
       </h1>
