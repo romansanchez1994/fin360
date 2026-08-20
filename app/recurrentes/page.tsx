@@ -64,8 +64,14 @@ export default async function RecurrentesPage() {
               </div>
               <div>
                 <form>
-                  <button type="submit">
-                    Acción
+                  <button 
+                    type="submit"
+                    className="text-yellow-400 text-sm"
+                  >
+                    {recurrente.activo
+                      ? "⏸️ Desactivar"
+                      : "▶️ Activar"
+                    }
                   </button>
                 </form>
               </div>
