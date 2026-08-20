@@ -57,8 +57,10 @@ export default async function Home() {
   const balance =
     totalIngresos - totalGastos;
 
-  const numeroGastos = 
-    expenses?.length ?? 0 +
+  const numeroGastos = expenses?.length ?? 0;
+
+  const numeroMovimientos =
+    (expenses?.length ?? 0) +
     (incomes?.length ?? 0);
   const gastosPorCategoria: {
     name: string;
