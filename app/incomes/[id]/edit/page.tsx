@@ -28,7 +28,9 @@ export default async function EditIncomePage({
         className="space-y-4"
       >
         <div>
-          <label /label>
+          <label className="block mb-1">
+            Descripción
+          </label>
 
           <input
             name="description"
