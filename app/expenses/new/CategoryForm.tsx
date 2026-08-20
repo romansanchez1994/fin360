@@ -12,7 +12,8 @@ export default function CategoryForm({
 }) {
   const [selectedCategory, setSelectedCategory] =
     useState("");
-
+  const [isRecurring, setIsRecurring] =
+    useState(false);
   const filteredSubcategories =
     subcategories.filter(
       (subcategory) =>
@@ -69,6 +70,60 @@ export default function CategoryForm({
           required
         />
       </div>
+      <div className="flex items-center gap-3">
+        <input
+          id="is_recurring"
+          type="checkbox"
+          name="is_recurring"
+          checked={isRecurring}
+          onChange={(e) =>
+            setIsRecurring(e.target.checked)
+          }
+        />
+      
+        <label htmlFor="is_recurring">
+          Gasto recurrente
+        </label>
+      </div>
+      {isRecurring && (
+        <>
+          <div>
+            <label className="block mb-1">
+              Frecuencia
+            </label>
+      
+            <select
+              name="frecuencia"
+              className="w-full border rounded-lg p-3"
+            >
+              <option value="mensual">
+                Mensual
+              </option>
+      
+              <option value="trimestral">
+                Trimestral
+              </option>
+      
+              <option value="anual">
+                Anual
+              </option>
+            </select>
+          </div>
+      
+          <div>
+            <label className="block mb-1">
+              Fecha fin (opcional)
+            </label>
+      
+            <input
+              name="fecha_fin"
+              type="date"
+              className="w-full border rounded-lg p-3"
+            />
+          </div>
+        </>
+      )}
+
          <div>
             <label className="block mb-1">
               Categoría
