@@ -164,6 +164,12 @@ export default async function Home() {
         "
       >
         <p className="text-white/70 text-sm">
+          {now.toLocaleDateString("es-ES", {
+            month: "long",
+            year: "numeric",
+          })}
+        </p>
+        <p className="text-white/70 text-sm">
           Resumen financiero
         </p>
       
@@ -172,11 +178,13 @@ export default async function Home() {
         </h2>
       
         <p className="text-white/60 mt-2">
-          Balance Actual
+          Mes actual:
+          {expensesCurrentMonth.length} gastos /
+          {incomesCurrentMonth.length} ingresos
         </p>
         
         <ExpenseTrend 
-          expenses={expenses ?? []}
+          expenses={expensesCurrentMonth}
         />
         
         <div className="border-t border-white/20 mt-6 pt-6">
