@@ -203,6 +203,11 @@ export default async function Home({
            <Link href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}>
              ◀
            </Link>
+
+           <span className="capitalize">
+             {currentMonthLabel}
+           </span>
+  
            <Link href="">
            </Link>
          </div>
