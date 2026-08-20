@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
+import DeleteButton from "@/components/DeleteButton";
+import { deleteRecurrente } from "./deleteRecurrente";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
@@ -58,6 +60,15 @@ export default async function RecurrentesPage() {
                 {recurrente.activo
                   ? "✅ Activo"
                   : "⏸️ Inactivo"}
+              </div>
+              <div className="flex gap-4 mt-3">
+                currente.bind(
+                    null,
+                    recurrente.id
+                  )}
+                >
+                  <DeleteButton />
+                </form>
               </div>
             </div>
           )
