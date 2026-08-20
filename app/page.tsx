@@ -200,8 +200,9 @@ export default async function Home({
       >
         <p className="text-white/70 text-sm">
           <div className="flex items-center justify-between text-white/70 text-sm">
-            month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
-            >
+            <Link
+              href={`/?
+                month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
               ◀
             </Link>
           
@@ -214,7 +215,8 @@ export default async function Home({
                 ▶
               </span>
             ) : (
-              <LinkgetFullYear()}`}
+              <Link
+                href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
               >
                 ▶
               </Link>
