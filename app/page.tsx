@@ -210,10 +210,14 @@ export default async function Home({
               <span className="opacity-30">
                 ▶
               </span>
-            ) : (
+              ) : (
               <Link
                 href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
               >
+              </Link>
+              )
+            </span>
+          </div>
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
