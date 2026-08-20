@@ -24,7 +24,6 @@ export default async function Home({
     .select("*")
     .eq("id", HOUSEHOLD_ID)
     .single();
-  console.log(params);
   
   const { data: expenses } = await supabase
     .from("expenses")
@@ -45,10 +44,15 @@ export default async function Home({
   const now = new Date();
   
   const currentMonth =
-    now.getMonth();
+    params.month !== undefined
+      ? Number(params.month)
+      : now.getMonth();
   
   const currentYear =
-    now.getFullYear();
+    params.year !== undefined
+      ? Number(params.year)
+      : now.getFullYear();
+  
   const currentDate = new Date(
     currentYear,
     currentMonth,
