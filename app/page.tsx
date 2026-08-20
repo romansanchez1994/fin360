@@ -200,7 +200,8 @@ export default async function Home({
       >
         <p className="text-white/70 text-sm">
          <div className="flex items-center justify-between text-white/70 text-sm">
-           <Link href="">
+           <Link href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}>
+             ◀
            </Link>
            <Link href="">
            </Link>
