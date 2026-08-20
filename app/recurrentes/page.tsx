@@ -64,7 +64,7 @@ export default async function RecurrentesPage() {
               <div className="flex gap-4 mt-3">
                 <form action={deleteRecurrente.bind(
                   null,
-                  recurrent.id
+                  recurrente.id
                 )}>
                   <DeleteButton />
                 </form>
