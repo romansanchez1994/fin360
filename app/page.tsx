@@ -24,7 +24,11 @@ export default async function Home({
     .select("*")
     .eq("id", HOUSEHOLD_ID)
     .single();
-
+  console.log(params);
+  console.log(
+    currentMonth,
+    currentYear
+  );
   const { data: expenses } = await supabase
     .from("expenses")
     .select(`
@@ -206,6 +210,7 @@ export default async function Home({
 
            <span className="capitalize">
              {currentMonthLabel}
+             ({currentMonth}/{currentYear})
            </span>
   
            <Link href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}>
