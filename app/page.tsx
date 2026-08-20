@@ -28,6 +28,10 @@ export default async function Home() {
       )
     `)
     .eq("household_id", HOUSEHOLD_ID);
+  const { data: incomes } = await supabase
+    .from("incomes")
+    .select("*")
+    .eq("household_id", HOUSEHOLD_ID);
 
   const ultimosGastos =
   expenses
@@ -43,8 +47,19 @@ export default async function Home() {
       (total, expense) => total + Number(expense.amount),
       0
     ) ?? 0;
+  const totalIngresos =
+    incomes?.reduce(
+      (total, income) =>
+        total + Number(income.amount),
+      0
+    ) ?? 0;
+  
+  const balance =
+    totalIngresos - totalGastos;
 
-  const numeroGastos = expenses?.length ?? 0;
+  const numeroGastos = 
+    expenses?.length ?? 0 +
+    (incomes?.length ?? 0);
   const gastosPorCategoria: {
     name: string;
     total: number;
@@ -94,11 +109,11 @@ export default async function Home() {
         </p>
       
         <h2 className="text-5xl font-bold mt-3">
-          {totalGastos.toFixed(2)} €
+          {balance.toFixed(2)} €
         </h2>
       
         <p className="text-white/60 mt-2">
-          Gasto acumulado
+          Balance Actual
         </p>
         
         <ExpenseTrend 
@@ -114,7 +129,7 @@ export default async function Home() {
               </p>
       
               <p className="text-green-400 font-bold text-lg">
-                0 €
+                {totalIngresos.toFixed(2)} €
               </p>
             </div>
       
@@ -134,7 +149,7 @@ export default async function Home() {
               </p>
       
               <p className="font-bold text-lg">
-                {numeroGastos}
+                {numeroMovimientos}
               </p>
             </div>
       
