@@ -67,7 +67,7 @@ export default async function RecurrentesPage() {
                   null,
                   recurrente.id,
                   recurrente.activo,
-                }>
+                )}>
                   <button 
                     type="submit"
                     className="text-yellow-400 text-sm"
