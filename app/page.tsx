@@ -202,6 +202,7 @@ export default async function Home({
           <div className="flex items-center justify-between text-white/70 text-sm">
            <Link
               href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear
+            >
             {isCurrentMonth ? (
               <span className="opacity-30">
                 ▶
