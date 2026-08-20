@@ -10,7 +10,15 @@ export const dynamic = "force-dynamic";
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
 
-export default async function Home() {
+export default async function Home({
+    searchParams,
+  }: {
+    searchParams: Promise<{
+      month?: string;
+      year?: string;
+    }>;
+  }) {
+  const params = await searchParams;
   const { data: household } = await supabase
     .from("households")
     .select("*")
@@ -40,6 +48,20 @@ export default async function Home() {
   
   const currentYear =
     now.getFullYear();
+  const currentDate = new Date(
+    currentYear,
+    currentMonth,
+    1
+  );
+  
+  const currentMonthLabel =
+    currentDate.toLocaleDateString(
+      "es-ES",
+      {
+        month: "long",
+        year: "numeric",
+      }
+    );
   
   const expensesCurrentMonth =
     (expenses ?? []).filter(
@@ -164,10 +186,7 @@ export default async function Home() {
         "
       >
         <p className="text-white/70 text-sm">
-          {now.toLocaleDateString("es-ES", {
-            month: "long",
-            year: "numeric",
-          })}
+          {currentMonthLabel}
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
