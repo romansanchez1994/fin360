@@ -208,7 +208,8 @@ export default async function Home({
              {currentMonthLabel}
            </span>
   
-           <Link href="">
+           <Link href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}>
+             ▶
            </Link>
          </div>
         </p>
