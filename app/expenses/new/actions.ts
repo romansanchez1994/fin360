@@ -50,6 +50,7 @@ export async function createExpense(
       description,
       category_id,
       subcategory_id,
+      is_recurring: isRecurring,
     });
     if (isRecurring) {
     await supabase
