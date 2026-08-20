@@ -62,6 +62,26 @@ export default async function Home() {
   const numeroMovimientos =
     (expenses?.length ?? 0) +
     (incomes?.length ?? 0);
+  const movimientos = [
+    ...(expenses ?? []).map((expense) => ({
+      ...expense,
+      tipo: "gasto",
+    })),
+    ...(incomes ?? []).map((income) => ({
+      ...income,
+      tipo: "ingreso",
+    })),
+  ];
+  
+  const ultimosMovimientos =
+    movimientos
+      .sort(
+        (a, b) =>
+          new Date(b.date).getTime() -
+          new Date(a.date).getTime()
+      )
+      .slice(0, 6);
+  
   const gastosPorCategoria: {
     name: string;
     total: number;
