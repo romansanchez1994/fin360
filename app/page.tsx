@@ -406,7 +406,7 @@ export default async function Home({
               </Link>
             </div>
             <div className="mt-2 text-right">
-              <Link hrefes
+              <Link href="/recurrentes">
                 Ver gastos recurrentes →
               </Link>
             </div>
