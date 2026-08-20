@@ -41,8 +41,8 @@ export default async function RecurrentesPage() {
                 {recurrente.nombre}
               </div>
 
-              <div className="text-green-400 font-bold mt-1">
-                {Number(
+              <div className="text-red-400 font-bold mt-1">
+                -{Number(
                   recurrente.importe
                 ).toFixed(2)} €
               </div>
