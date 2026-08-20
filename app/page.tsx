@@ -4,6 +4,7 @@ import ExpenseTrend from "@/components/dashboard/ExpenseTrend";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { deleteExpense } from "./expenses/deleteExpense";
+import { deleteIncome } from "./incomes/deleteIncome";
 export const dynamic = "force-dynamic";
 
 const HOUSEHOLD_ID =
@@ -229,8 +230,16 @@ export default async function Home() {
 
         <div className="space-y-2">
           {ultimosMovimientos.map((movimiento, index) => {
-            const deleteExpenseWithId =
-              deleteExpense.bind(null,movimiento.id);
+            const deleteAction =
+              movimiento.tipo === "ingreso"
+                ? deleteIncome.bind(
+                    null,
+                    movimiento.id
+                  )
+                : deleteExpense.bind(
+                    null,
+                    movimiento.id
+                  );
             
             return (
               <div
@@ -279,7 +288,7 @@ export default async function Home() {
                     >
                       ✏️ Editar
                     </Link>
-                    <form action={deleteExpenseWithId}>
+                    <form action={deleteAction}>
                       <DeleteButton />
                     </form>
                   </div>
