@@ -66,7 +66,7 @@ export default async function Home({
         month: "long",
         year: "numeric",
       }
-    );
+    ).replace(" de ", " ");
   const previousDate = new Date(
     currentYear,
     currentMonth - 1,
@@ -211,7 +211,6 @@ export default async function Home({
 
            <span className="capitalize">
              {currentMonthLabel}
-             ({currentMonth}/{currentYear})
            </span>
   
            <Link href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}>
