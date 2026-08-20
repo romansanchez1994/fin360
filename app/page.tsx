@@ -177,7 +177,7 @@ export default async function Home() {
           justify-center
           "
         >
-          Nuevo Gasto
+          + Gasto
       </Link>
       <Link
         href="/incomes/new"
@@ -196,7 +196,7 @@ export default async function Home() {
           justify-center
         "
       >
-        Nuevo Ingreso
+        + Ingreso
       </Link>
       
   <CategoryDonut 
