@@ -205,8 +205,6 @@ export default async function Home({
             >
               ◀
             </Link>
-          
-            <span classonth ? (
               <span className="opacity-30">
                 ▶
               </span>
@@ -216,7 +214,6 @@ export default async function Home({
               >
               </Link>
               )
-            </span>
           </div>
         </p>
         <p className="text-white/70 text-sm">
