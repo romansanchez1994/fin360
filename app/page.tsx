@@ -269,8 +269,15 @@ export default async function Home() {
                   </div>
 
                   <div className="flex items-center gap-4 mt-2">
-                    <Link href={`/expenses/${movimiento.id}/edit`}className="text-blue-400 text-sm">
-                        ✏️ Editar
+                    <Link
+                      href={
+                        movimiento.tipo === "ingreso"
+                          ? `/incomes/${movimiento.id}/edit`
+                          : `/expenses/${movimiento.id}/edit`
+                      }
+                      className="text-blue-400 text-sm"
+                    >
+                      ✏️ Editar
                     </Link>
                     <form action={deleteExpenseWithId}>
                       <DeleteButton />
