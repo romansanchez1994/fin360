@@ -29,7 +29,18 @@ export async function createExpense(
     subcategoryValue
       ? Number(subcategoryValue)
       : null;
-
+  const isRecurring =
+    formData.get("is_recurring") === "on";
+  
+  const frecuencia = String(
+    formData.get("frecuencia") ?? ""
+  );
+  
+  const fecha_fin =
+    formData.get("fecha_fin")
+      ? String(formData.get("fecha_fin"))
+      : null;
+  
   const result = await supabase
     .from("expenses")
     .insert({
@@ -40,6 +51,21 @@ export async function createExpense(
       category_id,
       subcategory_id,
     });
+    if (isRecurring) {
+    await supabase
+      .from("gastos_recurrentes")
+      .insert({
+        household_id: HOUSEHOLD_ID,
+        nombre: description,
+        importe: amount,
+        categoria_id: category_id,
+        subcategoria_id: subcategory_id,
+        frecuencia,
+        fecha_inicio: date,
+        fecha_fin,
+        activo: true,
+      });
+  }
   console.log(result);
   redirect("/");
 }
