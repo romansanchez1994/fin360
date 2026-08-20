@@ -4,6 +4,8 @@ import DeleteButton from "@/components/DeleteButton";
 import { deleteRecurrente } from "./deleteRecurrente";
 import { toggleActivo } from "./toggleActivo";
 
+export const dynamic = "force-dynamic";
+
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
 
