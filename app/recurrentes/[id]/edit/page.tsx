@@ -25,8 +25,8 @@ export default async function EditRecurrentePage({
 
       <form
         action={updateRecurrenteWithId}
-        className="space-y-4"
-   
+        className="space-y-4">
+          <label className="block mb-1">
             Nombre
           </label>
 
