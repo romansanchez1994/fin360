@@ -199,21 +199,12 @@ export default async function Home({
         "
       >
         <p className="text-white/70 text-sm">
-          <div className="flex items-center justify-between text-white/70 text-sm">
-           <Link
-              href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear
-            >
-            {isCurrentMonth ? (
-              <span className="opacity-30">
-                ▶
-              </span>
-            ) : (
-              ()}`}
-              >
-                ▶
-              </Link>
-            )}
-          </div>
+         <div className="flex items-center justify-between text-white/70 text-sm">
+           <Link href="">
+           </Link>
+           <Link href="">
+           </Link>
+         </div>
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
