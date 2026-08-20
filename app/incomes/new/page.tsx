@@ -7,12 +7,11 @@ export default function NewIncomePage() {
         Nuevo ingreso
       </h1>
 
-      }
+      <form
+        action={createIncome}
         className="space-y-4"
       >
-        <div>
-          <label className="block mb-1">
-            Importe
+        <mporte
           </label>
 
           <input
