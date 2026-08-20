@@ -11,7 +11,7 @@ export default function NewIncomePage() {
         action={createIncome}
         className="space-y-4"
       >
-        <mporte
+        <input
           </label>
 
           <input
