@@ -201,16 +201,12 @@ export default async function Home({
         <p className="text-white/70 text-sm">
           <div className="flex items-center justify-between text-white/70 text-sm">
             <Link
-              href={`/?
-                month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
+              href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
+            >
               ◀
             </Link>
           
-            <span className="capitalize">
-              {currentMonthLabel}
-            </span>
-          
-            {isCurrentMonth ? (
+            <span classonth ? (
               <span className="opacity-30">
                 ▶
               </span>
@@ -218,10 +214,7 @@ export default async function Home({
               <Link
                 href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
               >
-                ▶
               </Link>
-            )}
-          </div>
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
