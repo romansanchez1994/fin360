@@ -63,7 +63,11 @@ export default async function RecurrentesPage() {
                   : "⏸️ Inactivo"}
               </div>
               <div>
-                <form>
+                <form action={toggleActivo.bind(
+                  null,
+                  recurrente.id,
+                  recurrente.activo,
+                }>
                   <button 
                     type="submit"
                     className="text-yellow-400 text-sm"
