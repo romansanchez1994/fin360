@@ -21,7 +21,8 @@ export default async function RecurrentesPage() {
   return (
     <main className="max-w-md mx-auto p-6">
       <Link
-        href="4 inline-block"
+        href="/"
+        className="text-blue-600 mb-4 inline-block"
       >
         ← Dashboard
       </Link>
