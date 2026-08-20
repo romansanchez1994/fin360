@@ -33,7 +33,43 @@ export default async function Home() {
     .from("incomes")
     .select("*")
     .eq("household_id", HOUSEHOLD_ID);
-
+  const now = new Date();
+  
+  const currentMonth =
+    now.getMonth();
+  
+  const currentYear =
+    now.getFullYear();
+  
+  const expensesCurrentMonth =
+    (expenses ?? []).filter(
+      (expense) => {
+        const date =
+          new Date(expense.date);
+  
+        return (
+          date.getMonth() ===
+            currentMonth &&
+          date.getFullYear() ===
+            currentYear
+        );
+      }
+    );
+  
+  const incomesCurrentMonth =
+    (incomes ?? []).filter(
+      (income) => {
+        const date =
+          new Date(income.date);
+  
+        return (
+          date.getMonth() ===
+            currentMonth &&
+          date.getFullYear() ===
+            currentYear
+        );
+      }
+    );
   const ultimosGastos =
   expenses
     ?.sort(
@@ -44,12 +80,12 @@ export default async function Home() {
     .slice(0, 6) ?? [];
 
   const totalGastos =
-    expenses?.reduce(
+    expensesCurrentMonth.reduce(
       (total, expense) => total + Number(expense.amount),
       0
     ) ?? 0;
   const totalIngresos =
-    incomes?.reduce(
+    incomesCurrentMonth.reduce(
       (total, income) =>
         total + Number(income.amount),
       0
@@ -58,11 +94,11 @@ export default async function Home() {
   const balance =
     totalIngresos - totalGastos;
 
-  const numeroGastos = expenses?.length ?? 0;
+  const numeroGastos = expensesCurrentMonth.length;
 
   const numeroMovimientos =
-    (expenses?.length ?? 0) +
-    (incomes?.length ?? 0);
+    expensesCurrentMonth.length +
+    incomesCurrentMonth.length;
   const movimientos = [
     ...(expenses ?? []).map((expense) => ({
       ...expense,
