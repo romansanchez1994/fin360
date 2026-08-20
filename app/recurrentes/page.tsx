@@ -62,13 +62,7 @@ export default async function RecurrentesPage() {
                   : "⏸️ Inactivo"}
               </div>
               <div className="flex gap-4 mt-3">
-                currente.bind(
-                    null,
-                    recurrente.id
-                  )}
-                >
-                  <DeleteButton />
-                </form>
+
               </div>
             </div>
           )
