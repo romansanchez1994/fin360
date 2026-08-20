@@ -405,6 +405,11 @@ export default async function Home({
                   Ver todos los gastos →
               </Link>
             </div>
+            <div className="mt-2 text-right">
+              <Link hrefes
+                Ver gastos recurrentes →
+              </Link>
+            </div>
         </div>
       </div>
     </main>
