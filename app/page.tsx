@@ -124,7 +124,7 @@ export default async function Home() {
     total: number;
   }[]=
     Object.values(
-      (expenses ?? []).reduce(
+      expensesCurrentMonth.reduce(
         (acc: any, gasto: any) => {
           const nombre =
             gasto.categories?.name ?? "Sin categoría";
@@ -178,9 +178,7 @@ export default async function Home() {
         </h2>
       
         <p className="text-white/60 mt-2">
-          Mes actual:
-          {expensesCurrentMonth.length} gastos /
-          {incomesCurrentMonth.length} ingresos
+          Balance actual
         </p>
         
         <ExpenseTrend 
