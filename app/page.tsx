@@ -214,7 +214,6 @@ export default async function Home({
               <Link
                 href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
               >
-              </Link>
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
