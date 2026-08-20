@@ -11,9 +11,11 @@ export default function NewIncomePage() {
         action={createIncome}
         className="space-y-4"
       >
-        <input
+        <div>
+          <label className="block mb-1">
+            Importe
           </label>
-
+        
           <input
             name="amount"
             type="number"
