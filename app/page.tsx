@@ -177,8 +177,28 @@ export default async function Home() {
           justify-center
           "
         >
-          +
+          Nuevo Gasto
       </Link>
+      <Link
+        href="/incomes/new"
+        className="
+          fixed
+          bottom-24
+          right-6
+          w-14
+          h-14
+          rounded-full
+          bg-green-600
+          text-white
+          text-2xl
+          flex
+          items-center
+          justify-center
+        "
+      >
+        Nuevo Ingreso
+      </Link>
+      
   <CategoryDonut 
     data={gastosPorCategoria}  
   />
