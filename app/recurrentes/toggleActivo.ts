@@ -2,6 +2,7 @@
 
 import { supabase } from "@/lib/supabase/client";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export async function toggleActivo(
   id: string,
