@@ -8,11 +8,9 @@ export default function NewIncomePage() {
       </h1>
 
       <form
-        action={createIncome}
-        className="space-y-4"
-      >
-        <div>
-            </label>
+        action={createIncome     <label className="block mb-1">
+            Importe
+          </label>
 
           <input
             name="amount"
