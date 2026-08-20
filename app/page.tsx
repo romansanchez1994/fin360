@@ -277,7 +277,16 @@ export default async function Home() {
                     </form>
                   </div>
                 </div>
-                <span className="font-semibold text-white text-lg">
+                <span
+                  className={`font-semibold text-lg ${
+                    movimiento.tipo === "ingreso"
+                      ? "text-green-400"
+                      : "text-red-400"
+                  }`}
+                >
+                  {movimiento.tipo === "ingreso"
+                    ? "+"
+                    : "-"}
                   {Number(movimiento.amount).toFixed(2)} €
                 </span>
               </div>
