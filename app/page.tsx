@@ -224,17 +224,17 @@ export default async function Home() {
   />
       <div className="border rounded-xl p-4 mb-4">
   <h2 className="text-gray-500 mb-3">
-    Últimos gastos
+    Últimos movimientos
   </h2>
 
         <div className="space-y-2">
-          {ultimosGastos.map((gasto, index) => {
+          {ultimosMovimientos.map((movimiento, index) => {
             const deleteExpenseWithId =
-              deleteExpense.bind(null,gasto.id);
+              deleteExpense.bind(null,movimiento.id);
             
             return (
               <div
-                key={gasto.id}
+                key={movimiento.id}
                 className={`flex  justify-between p-4 rounded-2xl mb-3 ${
                   index % 2 === 0
                     ? "bg-zinc-900"
@@ -243,7 +243,7 @@ export default async function Home() {
               >
                 <div>
                   <div className="text-xs text-gray-500">
-                    {new Date(gasto.date).toLocaleDateString("es-ES",
+                    {new Date(movimiento.date).toLocaleDateString("es-ES",
                                                              {
                                                                day: "2-digit",
                                                                month: "2-digit",
@@ -253,20 +253,23 @@ export default async function Home() {
                   </div>
 
                   <div className="font-medium text-white">
-                    {gasto.description}
+                    {movimiento.tipo === "ingreso"
+                      ? "💰 "
+                      : "💸 "}
+                    {movimiento.description}
                   </div>
                   
 
                   <div className="text-sm text-gray-400">
-                    {gasto.categories?.name}
+                    {movimiento.categories?.name}
 
-                    {gasto.subcategories?.name
-                    ? ` · ${gasto.subcategories.name}`
+                    {movimiento.subcategories?.name
+                    ? ` · ${movimiento.subcategories.name}`
                     : ""}
                   </div>
 
                   <div className="flex items-center gap-4 mt-2">
-                    <Link href={`/expenses/${gasto.id}/edit`}className="text-blue-400 text-sm">
+                    <Link href={`/expenses/${movimiento.id}/edit`}className="text-blue-400 text-sm">
                         ✏️ Editar
                     </Link>
                     <form action={deleteExpenseWithId}>
@@ -275,7 +278,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <span className="font-semibold text-white text-lg">
-                  {Number(gasto.amount).toFixed(2)} €
+                  {Number(movimiento.amount).toFixed(2)} €
                 </span>
               </div>
             )
