@@ -83,7 +83,7 @@ export default async function RecurrentesPage() {
               </div>
               <div className="flex gap-4 mt-3">
                 <Link
-                  href={`/recurrente.id}/edit`}
+                  href={`/recurrentes/${recurrente.id}/edit`}
                     className="text-blue-400 text-sm"
                 >
                   ✏️ Editar
