@@ -62,7 +62,20 @@ export default async function Home({
         year: "numeric",
       }
     );
+  const previousDate = new Date(
+    currentYear,
+    currentMonth - 1,
+    1
+  );
   
+  const nextDate = new Date(
+    currentYear,
+    currentMonth + 1,
+    1
+  );
+  const isCurrentMonth =
+    currentMonth === now.getMonth() &&
+    currentYear === now.getFullYear();
   const expensesCurrentMonth =
     (expenses ?? []).filter(
       (expense) => {
@@ -186,7 +199,27 @@ export default async function Home({
         "
       >
         <p className="text-white/70 text-sm">
-          {currentMonthLabel}
+          <div className="flex items-center justify-between text-white/70 text-sm">
+            month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
+            >
+              ◀
+            </Link>
+          
+            <span className="capitalize">
+              {currentMonthLabel}
+            </span>
+          
+            {isCurrentMonth ? (
+              <span className="opacity-30">
+                ▶
+              </span>
+            ) : (
+              <LinkgetFullYear()}`}
+              >
+                ▶
+              </Link>
+            )}
+          </div>
         </p>
         <p className="text-white/70 text-sm">
           Resumen financiero
