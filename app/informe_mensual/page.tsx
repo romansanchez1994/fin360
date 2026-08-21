@@ -136,7 +136,8 @@ return (
           ▶
         </span>
       ) : (
-        &year=${nextDate.getFullYear()}`}
+        <Link
+          href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
         >
           ▶
         </Link>
