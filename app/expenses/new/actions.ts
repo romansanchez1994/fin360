@@ -41,19 +41,9 @@ export async function createExpense(
       ? String(formData.get("fecha_fin"))
       : null;
   
-  const result = await supabase
-    .from("expenses")
-    .insert({
-      household_id: HOUSEHOLD_ID,
-      date,
-      amount,
-      description,
-      category_id,
-      subcategory_id,
-      is_recurring: isRecurring,
-    });
-    if (isRecurring) {
-    await supabase
+  
+  if (isRecurring) {
+    const { data: recurrente } = await supabase
       .from("gastos_recurrentes")
       .insert({
         household_id: HOUSEHOLD_ID,
@@ -65,8 +55,36 @@ export async function createExpense(
         fecha_inicio: date,
         fecha_fin,
         activo: true,
+      })
+      .select()
+      .single();
+  
+    await supabase
+      .from("expenses")
+      .insert({
+        household_id: HOUSEHOLD_ID,
+        date,
+        amount,
+        description,
+        category_id,
+        subcategory_id,
+        is_recurring: true,
+        recurring_expense_id:
+          recurrente.id,
+      });
+  } else {
+    await supabase
+      .from("expenses")
+      .insert({
+        household_id: HOUSEHOLD_ID,
+        date,
+        amount,
+        description,
+        category_id,
+        subcategory_id,
+        is_recurring: false,
       });
   }
-  console.log(result);
+  
   redirect("/");
 }
