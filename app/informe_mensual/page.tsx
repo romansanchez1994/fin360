@@ -127,14 +127,16 @@ return (
         ◀
       </Link>
 
-      <h1 className="text>
+      <h1 className="text-3xl font-bold capitalize">
+        Informe mensual · {currentMonthLabel}
+      </h1>
 
       {isCurrentMonth ? (
         <span className="opacity-30">
           ▶
         </span>
       ) : (
-        Date.getMonth()}&year=${nextDate.getFullYear()}`}
+        &year=${nextDate.getFullYear()}`}
         >
           ▶
         </Link>
