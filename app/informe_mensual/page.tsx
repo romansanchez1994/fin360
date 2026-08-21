@@ -171,7 +171,27 @@ const diferenciaIngresos =
 
 const diferenciaBalance =
   balance - balanceMesAnterior;
-  
+const textoGastos =
+  diferenciaGastos >= 0
+    ? `🔴 Gastaste ${diferenciaGastos.toFixed(2)} € más`
+    : `🟢 Gastaste ${Math.abs(diferenciaGastos).toFixed(2)} € menos`;
+
+const textoIngresos =
+  diferenciaIngresos >= 0
+    ? `🟢 Ingresaste ${diferenciaIngresos.toFixed(2)} € más`
+    : `🔴 Ingresaste ${Math.abs(diferenciaIngresos).toFixed(2)} € menos`;
+
+const textoBalance =
+  diferenciaBalance >= 0
+    ? `🟢 Tu balance mejoró ${diferenciaBalance.toFixed(2)} €`
+    : `🔴 Tu balance empeoró ${Math.abs(diferenciaBalance).toFixed(2)} €`;
+const previousMonthLabel =
+  previousMonthDate
+    .toLocaleDateString("es-ES", {
+      month: "long",
+      year: "numeric",
+    })
+    .replace(" de ", " ");
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -222,25 +242,15 @@ return (
 
     <div className="mt-6 border rounded-xl p-6">
       <h2 className="text-xl font-bold mb-4">
-        Comparativa con el mes anterior
+        Comparativa con {previousMonthLabel}
       </h2>
     
-      <div>
-        Gastos:
-        {" "}
-        {diferenciaGastos.toFixed(2)} €
-      </div>
+      <div className="space-y-3">
+        <div>{textoGastos}</div>
     
-      <div>
-        Ingresos:
-        {" "}
-        {diferenciaIngresos.toFixed(2)} €
-      </div>
+        <div>{textoIngresos}</div>
     
-      <div>
-        Balance:
-        {" "}
-        {diferenciaBalance.toFixed(2)} €
+        <div>{textoBalance}</div>
       </div>
     </div>
   </main>
