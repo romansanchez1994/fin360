@@ -280,7 +280,7 @@ export default async function Home({
 
       <div className="mt-4 text-center">
         <Link
-          href={`/informe_mensual?month=${currentMonthtYear}`}
+          href={`/informe_mensual?month=${currentMonthYear}`}
           className="text-blue-500">
           📊 Ver informe mensual →
         </Link>
