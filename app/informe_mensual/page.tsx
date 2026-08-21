@@ -122,7 +122,7 @@ return (
 
     <div className="flex items-center justify-between mt-6">
       <Link
-        href={`/?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
+        href={`/?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
       >
         ◀
       </Link>
