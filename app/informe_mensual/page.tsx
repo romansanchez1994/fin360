@@ -110,7 +110,58 @@ const ahorro =
   totalIngresos > 0
     ? (balance / totalIngresos) * 100
     : 0;
+  
+const previousMonthDate = new Date(
+  currentYear,
+  currentMonth - 1,
+  1
+);
 
+const previousMonth =
+  previousMonthDate.getMonth();
+
+const previousYear =
+  previousMonthDate.getFullYear();
+const expensesPreviousMonth =
+  (expenses ?? []).filter(
+    (expense) => {
+      const date = new Date(expense.date);
+
+      return (
+        date.getMonth() === previousMonth &&
+        date.getFullYear() === previousYear
+      );
+    }
+  );
+
+const incomesPreviousMonth =
+  (incomes ?? []).filter(
+    (income) => {
+      const date = new Date(income.date);
+
+      return (
+        date.getMonth() === previousMonth &&
+        date.getFullYear() === previousYear
+      );
+    }
+  );
+  const gastosMesAnterior =
+  expensesPreviousMonth.reduce(
+    (total, expense) =>
+      total + Number(expense.amount),
+    0
+  );
+
+const ingresosMesAnterior =
+  incomesPreviousMonth.reduce(
+    (total, income) =>
+      total + Number(income.amount),
+    0
+  );
+
+const balanceMesAnterior =
+  ingresosMesAnterior -
+  gastosMesAnterior;
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -156,6 +207,30 @@ return (
 
       <div>
         Ahorro: {ahorro.toFixed(1)} %
+      </div>
+    </div>
+
+    <div className="mt-6 border rounded-xl p-6">
+      <h2 className="text-xl font-bold mb-4">
+        Comparativa con el mes anterior
+      </h2>
+    
+      <div>
+        Gastos:
+        {" "}
+        {diferenciaGastos.toFixed(2)} €
+      </div>
+    
+      <div>
+        Ingresos:
+        {" "}
+        {diferenciaIngresos.toFixed(2)} €
+      </div>
+    
+      <div>
+        Balance:
+        {" "}
+        {diferenciaBalance.toFixed(2)} €
       </div>
     </div>
   </main>
