@@ -137,7 +137,7 @@ return (
         </span>
       ) : (
         <Link
-          href={`/informe_mensual?month=${nextDate=${nextDate.getFullYear()}`}
+          href={`/informe_mensual?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
         >
           ▶
         </Link>
