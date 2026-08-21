@@ -130,18 +130,11 @@ return (
       <h1 className="text-3xl font-bold capitalize">
         Informe mensual · {currentMonthLabel}
       </h1>
-
-      {isCurrentMonth ? (
-        <span className="opacity-30">
-          ▶
-        </span>
-      ) : (
-        <Link
-          href={`/informe_mensual?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
-        >
-          ▶
-        </Link>
-      )}
+      <Link
+        href={`/informe_mensual?month=${nextDate.getMonth()}&year=${nextDate.getFullYear()}`}
+      >
+        ▶
+      </Link>
     </div>
 
     <div className="mt-8 border rounded-xl p-6">
