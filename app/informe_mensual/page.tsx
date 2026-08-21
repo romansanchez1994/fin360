@@ -162,6 +162,16 @@ const ingresosMesAnterior =
 const balanceMesAnterior =
   ingresosMesAnterior -
   gastosMesAnterior;
+
+const diferenciaGastos =
+  totalGastos - gastosMesAnterior;
+
+const diferenciaIngresos =
+  totalIngresos - ingresosMesAnterior;
+
+const diferenciaBalance =
+  balance - balanceMesAnterior;
+  
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
