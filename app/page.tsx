@@ -1,3 +1,4 @@
+import { generateRecurringExpenses } from "./recurrentes/generateRecurringExpenses";
 import CategoryDonut from "@/components/dashboard/CategoryDonut";
 import DeleteButton from "@/components/DeleteButton";
 import ExpenseTrend from "@/components/dashboard/ExpenseTrend";
@@ -24,7 +25,38 @@ export default async function Home({
     .select("*")
     .eq("id", HOUSEHOLD_ID)
     .single();
+
+  const now = new Date();
   
+  const currentMonth =
+    params.month !== undefined
+      ? Number(params.month)
+      : now.getMonth();
+  
+  const currentYear =
+    params.year !== undefined
+      ? Number(params.year)
+      : now.getFullYear();
+
+  await generateRecurringExpenses(
+    currentMonth,
+    currentYear,
+  );
+  
+  const currentDate = new Date(
+    currentYear,
+    currentMonth,
+  );
+  
+  const currentMonthLabel =
+    currentDate.toLocaleDateString(
+      "es-ES",
+      {
+        month: "long",
+        year: "numeric",
+      }
+    ).replace(" de ", " ");
+
   const { data: expenses } = await supabase
     .from("expenses")
     .select(`
@@ -41,32 +73,7 @@ export default async function Home({
     .from("incomes")
     .select("*")
     .eq("household_id", HOUSEHOLD_ID);
-  const now = new Date();
   
-  const currentMonth =
-    params.month !== undefined
-      ? Number(params.month)
-      : now.getMonth();
-  
-  const currentYear =
-    params.year !== undefined
-      ? Number(params.year)
-      : now.getFullYear();
-  
-  const currentDate = new Date(
-    currentYear,
-    currentMonth,
-    1
-  );
-  
-  const currentMonthLabel =
-    currentDate.toLocaleDateString(
-      "es-ES",
-      {
-        month: "long",
-        year: "numeric",
-      }
-    ).replace(" de ", " ");
   const previousDate = new Date(
     currentYear,
     currentMonth - 1,
