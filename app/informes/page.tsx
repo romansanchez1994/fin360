@@ -178,7 +178,10 @@ export default async function InformesPage({
                     ✏️ Editar
                   </Link>
                   <form>
-                    <DeleteButton />
+                    action={deleteExpense.bind(
+                      null,
+                      gasto.id
+                    )}
                   </form>
                 </div>
               </div>
