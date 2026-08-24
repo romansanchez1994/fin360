@@ -171,7 +171,12 @@ export default async function InformesPage({
                     : ""}
                 </div>
                 <div>
-                  
+                  <Link
+                    href={`/expenses/${gasto.id}/edit`}
+                    className="text-blue-400 text-sm"
+                    >
+                    ✏️ Editar
+                  </Link>
                 </div>
               </div>
 
