@@ -177,6 +177,9 @@ export default async function InformesPage({
                     >
                     ✏️ Editar
                   </Link>
+                  <form>
+                    <DeleteButton />
+                  </form>
                 </div>
               </div>
 
