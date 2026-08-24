@@ -2,7 +2,7 @@ import Filters from "./Filters";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import DeleteButton from "@/components/DeleteButton";
-import { deleteExpense } from "./deleteExpense";
+import { deleteExpense } from "../expenses/deleteExpense";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
