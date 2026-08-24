@@ -338,10 +338,10 @@ return (
                   <div
                     className="bg-blue-500 h-4 rounded-full"
                     style={{
-                      width: `${porcentaje}%`
+                      width: `${porcentaje}%`,
                       backgroundColor:
                         categoryColors[
-                          categoria.name
+                          categoria.nombre
                         ] ?? "#6b7280",
                     }}
                   />
