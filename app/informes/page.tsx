@@ -178,6 +178,7 @@ export default async function InformesPage({
                     ✏️ Editar
                   </Link>
                   <form
+                    className="inline"
                     action={deleteExpense.bind(
                       null,
                       gasto.id
