@@ -170,7 +170,7 @@ export default async function InformesPage({
                     ? ` · ${gasto.subcategories.name}`
                     : ""}
                 </div>
-                <div>
+                <div className="flex items-center gap-6 mt-2">
                   <Link
                     href={`/expenses/${gasto.id}/edit`}
                     className="text-blue-400 text-sm"
