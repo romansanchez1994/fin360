@@ -232,6 +232,17 @@ const categoriasOrdenadas =
 const maxCategoria =
   categoriasOrdenadas[0]?.importe ??
   1;
+
+const categoryColors: Record<
+    string,
+    string
+  > = {
+    Compras: "#22c55e",
+    Alimentación: "#3b82f6",
+    Vivienda: "#f59e0b",
+    Ocio: "#8b5cf6",
+    Transporte: "#ef4444",
+  };
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -327,7 +338,11 @@ return (
                   <div
                     className="bg-blue-500 h-4 rounded-full"
                     style={{
-                      width: `${porcentaje}%`,
+                      width: `${porcentaje}%`
+                      backgroundColor:
+                        categoryColors[
+                          categoria.name
+                        ] ?? "#6b7280",
                     }}
                   />
                 </div>
