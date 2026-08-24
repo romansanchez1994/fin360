@@ -243,6 +243,13 @@ const categoryColors: Record<
     Ocio: "#8b5cf6",
     Transporte: "#ef4444",
   };
+  
+const totalCategorias =
+  categoriasOrdenadas.reduce(
+    (total, categoria) =>
+      total + categoria.importe,
+    0
+  );
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -317,6 +324,10 @@ return (
               (categoria.importe /
                 maxCategoria) *
               100;
+            const porcentajeTotal =
+              (categoria.importe /
+              totalCategorias) *
+              100;
     
             return (
               <div
@@ -328,9 +339,9 @@ return (
                   </span>
     
                   <span>
-                    {categoria.importe.toFixed(
-                      2
-                    )} €
+                    {categoria.importe.toFixed(2)} €
+                    {" "}
+                    ({porcentajeTotal.toFixed(0)}%)
                   </span>
                 </div>
     
