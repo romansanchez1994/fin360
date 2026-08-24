@@ -1,6 +1,8 @@
 import Filters from "./Filters";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
+import DeleteButton from "@/components/DeleteButton";
+import { deleteExpense } from "./deleteExpense";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
@@ -167,6 +169,9 @@ export default async function InformesPage({
                   {gasto.subcategories?.name
                     ? ` · ${gasto.subcategories.name}`
                     : ""}
+                </div>
+                <div>
+                  
                 </div>
               </div>
 
