@@ -55,10 +55,16 @@ const isCurrentMonth =
   currentMonth === now.getMonth() &&
   currentYear === now.getFullYear();
 
-  const { data: expenses } = await supabase
+const { data: expenses } = await supabase
   .from("expenses")
-  .select("*")
+  .select(`
+    *,
+    categories (
+      name
+    )
+  `)
   .eq("household_id", HOUSEHOLD_ID);
+
 
 const { data: incomes } = await supabase
   .from("incomes")
@@ -192,6 +198,40 @@ const previousMonthLabel =
       year: "numeric",
     })
     .replace(" de ", " ");
+
+const gastosPorCategoria: Record<
+    string,
+    number
+  > = {};
+  expensesCurrentMonth.forEach(
+  (expense: any) => {
+    const categoria =
+      expense.categories?.name ??
+      "Sin categoría";
+
+    gastosPorCategoria[categoria] =
+      (gastosPorCategoria[categoria] ??
+        0) +
+      Number(expense.amount);
+  }
+);
+
+const categoriasOrdenadas =
+  Object.entries(
+    gastosPorCategoria
+  )
+    .map(([nombre, importe]) => ({
+      nombre,
+      importe,
+    }))
+    .sort(
+      (a, b) =>
+        b.importe - a.importe
+    )
+    .slice(0, 5);
+const maxCategoria =
+  categoriasOrdenadas[0]?.importe ??
+  1;
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -253,6 +293,51 @@ return (
         <div>{textoBalance}</div>
       </div>
     </div>
+
+    <div className="mt-6 border rounded-xl p-6">
+      <h2 className="text-xl font-bold mb-4">
+        Gastos por categorías
+      </h2>
+    
+      <div className="space-y-4">
+        {categoriasOrdenadas.map(
+          (categoria) => {
+            const porcentaje =
+              (categoria.importe /
+                maxCategoria) *
+              100;
+    
+            return (
+              <div
+                key={categoria.nombre}
+              >
+                <div className="flex justify-between mb-1">
+                  <span>
+                    {categoria.nombre}
+                  </span>
+    
+                  <span>
+                    {categoria.importe.toFixed(
+                      2
+                    )} €
+                  </span>
+                </div>
+    
+                <div className="w-full bg-gray-800 rounded-full h-4">
+                  <div
+                    className="bg-blue-500 h-4 rounded-full"
+                    style={{
+                      width: `${porcentaje}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          }
+        )}
+      </div>
+    </div>
+
   </main>
 );
 }
