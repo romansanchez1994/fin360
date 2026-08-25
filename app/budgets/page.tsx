@@ -159,7 +159,7 @@ export default async function BudgetsPage({
                 €
               </div>
             </div>
-          ))
+          );
         )}
       </div>
     </main>
