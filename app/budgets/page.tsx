@@ -141,6 +141,21 @@ export default async function BudgetsPage({
                 presupuesto > 0
                   ? (gastado/presupuesto) * 100
                   : 0;
+            let colorBarra = "bg-green-500";
+            let estado =
+              "✅ Dentro del presupuesto";
+            
+            if (porcentaje >= 80) {
+              colorBarra = "bg-yellow-500";
+              estado =
+                "⚠️ Cerca del límite";
+            }
+            
+            if (porcentaje > 100) {
+              colorBarra = "bg-red-500";
+              estado =
+                "🚨 Presupuesto superado";
+            }
             return(
             <div
               key={budget.id}
@@ -162,7 +177,22 @@ export default async function BudgetsPage({
                   : "Exceso"}
                 : {Math.abs(disponible).toFixed(2)} €
               </div>
+              <div className="w-full bg-zinc-800 rounded-full h-4 mt-4">
+                <div
+                  className={`h-4 rounded-full ${colorBarra}`}
+                  style={{
+                    width: `${Math.min(
+                      porcentaje,
+                      100
+                    )}%`,
+                  }}
+                />
+              </div>
               <div className="mt-2">
+                {estado}
+              </div>
+              
+              <div className="text-sm text-gray-400">
                 {porcentaje.toFixed(0)}%
               </div>
             </div>
