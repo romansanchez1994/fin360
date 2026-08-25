@@ -28,6 +28,11 @@ export default async function EditBudgetPage({
   });
   return (
     <main className="p-6 max-w-md mx-auto">
+      <Link
+        href="/"
+        className="text-blue-400">
+        ← Presupuestos
+      </Link>
       <h1 className="text-xl font-bold mb-6">
         ✏️ Editar presupuesto
       </h1>
