@@ -49,7 +49,7 @@ export default async function BudgetsPage({
     currentMonth + 1,
     1
   );
-  const { data: budgets } =
+  const { data: budgets, error } =
     await supabase
       .from("budgets")
       .select(`
@@ -58,12 +58,12 @@ export default async function BudgetsPage({
           name
         )
       `)
-      .eq(
-        "household_id",
-        HOUSEHOLD_ID
-      )
+      .eq("household_id", HOUSEHOLD_ID)
       .eq("month", currentMonth)
       .eq("year", currentYear);
+  
+  console.log(error);
+
     return (
     <main className="p-6 max-w-md mx-auto">
       <Link
@@ -99,6 +99,9 @@ export default async function BudgetsPage({
       </div>
       <pre>
         {JSON.stringify(budgets, null, 2)}
+      </pre>
+      <pre>
+        {JSON.stringify(error, null, 2)}
       </pre>
 
         <div className="mt-6">
