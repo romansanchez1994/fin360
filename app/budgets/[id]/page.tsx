@@ -55,7 +55,7 @@ export default async function EditBudgetPage({
           {monthLabel}
         </div>
       </div>
-      <form action={updateBudget.bind(null)}>
+      <form action={updateBudget.bind(null,id)}>
         <label className="block mb-2">
           Importe (€)
         </label>
