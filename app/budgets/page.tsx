@@ -72,7 +72,8 @@ export default async function BudgetsPage({
       </Link>
 
       <div className="flex items-center justify-between mt-6">
-        Date.getMonth()}&year=${previousDate.getFullYear()}`}
+        <Link
+          href={`/budgets?month=${previousDate.getMonth()}&year=${previousDate.getFullYear()}`}
         >
           ◀
         </Link>
@@ -86,8 +87,10 @@ export default async function BudgetsPage({
         >
           ▶
         </Link>
-    "mt-6">
+
+        <div className="mt-6">
         {!budgets?.length ? (
+
           <div className="bg-zinc-900 rounded-2xl p-6 text-center text-gray-400">
             No hay presupuestos para este mes
           </div>
