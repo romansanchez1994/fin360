@@ -89,6 +89,14 @@ export default async function BudgetsPage({
           ▶
         </Link>
       </div>
+      <div className="mt-4 mb-6">
+        <Link
+          href={`/budgets/new?month=${currentMonth}&year=${currentYear}`}
+          className="text-blue-400"
+        >
+          ➕ Nuevo presupuesto
+        </Link>
+      </div>
         <div className="mt-6">
         {!budgets?.length ? (
 
