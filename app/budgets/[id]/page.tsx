@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase/client";
+import Link from "next/link";
 
 export default async function EditBudgetPage({
   params,
