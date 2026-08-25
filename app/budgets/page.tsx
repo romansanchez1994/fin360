@@ -79,7 +79,7 @@ export default async function BudgetsPage({
           ◀
         </Link>
 
-        <h1 className="text-[1.65rem] font-bold capitalize">
+        <h1 className="text-xl font-bold capitalize">
           🎯 Presupuestos · {currentMonthLabel}
         </h1>
 
