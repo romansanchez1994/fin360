@@ -61,7 +61,13 @@ export default async function BudgetsPage({
       .eq("household_id", HOUSEHOLD_ID)
       .eq("month", currentMonth)
       .eq("year", currentYear);
-
+  
+    const { data: expenses } =
+      await supabase
+        .from("expenses")
+        .select("*")
+        .eq("household_id", HOUSEHOLD_ID);
+  
     return (
     <main className="p-6 max-w-md mx-auto">
       <Link
@@ -102,7 +108,40 @@ export default async function BudgetsPage({
             No hay presupuestos para este mes
           </div>
         ) : (
-          budgets.map((budget) => (
+          budgets.map((budget) => {
+            const gastado =
+              (expenses ?? [])
+                .filter((expense) => {
+                  const date = new Date(
+                    expense.date
+                  );
+            
+                  return (
+                    expense.category_id ===
+                      budget.category_id &&
+                    date.getMonth() ===
+                      currentMonth &&
+                    date.getFullYear() ===
+                      currentYear
+                  );
+                })
+                .reduce(
+                  (total, expense) =>
+                    total +
+                    Number(expense.amount),
+                  0
+                );
+              const presupuesto =
+                Number(budget.amount);
+            
+              const disponible =
+                presupuesto - gastado;
+
+              const porcentaje =
+                presupuesto > 0
+                  ? (gastado/presupuesto) * 100
+                  : 0;
+            
             <div
               key={budget.id}
               className="bg-zinc-900 rounded-2xl p-4 mb-4"
