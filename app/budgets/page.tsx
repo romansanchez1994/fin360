@@ -141,7 +141,7 @@ export default async function BudgetsPage({
                 presupuesto > 0
                   ? (gastado/presupuesto) * 100
                   : 0;
-            
+            return(
             <div
               key={budget.id}
               className="bg-zinc-900 rounded-2xl p-4 mb-4"
@@ -160,6 +160,7 @@ export default async function BudgetsPage({
               </div>
             </div>
           );
+          })
         )}
       </div>
     </main>
