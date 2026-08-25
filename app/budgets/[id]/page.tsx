@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase/client";
 import Link from "next/link";
+import { updateBudget } from "./updateBudget";
 
 export default async function EditBudgetPage({
   params,
@@ -54,18 +55,19 @@ export default async function EditBudgetPage({
           {monthLabel}
         </div>
       </div>
-      <form>
+      <form action={updateBudget.bind(null,
         <label className="block mb-2">
           Importe (€)
         </label>
       
         <input
           type="number"
+          name="amount"
           step="0.01"
           defaultValue={budget.amount}
           className="w-full p-3 rounded bg-zinc-900"
         />
-
+      
         <button
           type="submit"
           className="mt-6 w-full bg-blue-600 p-3 rounded"
