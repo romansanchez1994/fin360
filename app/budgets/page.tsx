@@ -97,6 +97,10 @@ export default async function BudgetsPage({
           ➕ Nuevo presupuesto
         </Link>
       </div>
+      <pre>
+        {JSON.stringify(budgets, null, 2)}
+      </pre>
+
         <div className="mt-6">
         {!budgets?.length ? (
 
