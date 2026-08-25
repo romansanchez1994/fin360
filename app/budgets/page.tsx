@@ -67,7 +67,8 @@ export default async function BudgetsPage({
     return (
     <main className="p-6 max-w-md mx-auto">
       <Link
-        href    >
+        href="/"
+        className="text-blue-400">
         ← Dashboard
       </Link>
 
@@ -87,7 +88,7 @@ export default async function BudgetsPage({
         >
           ▶
         </Link>
-
+      </div>
         <div className="mt-6">
         {!budgets?.length ? (
 
