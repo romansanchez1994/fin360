@@ -43,7 +43,8 @@ export default async function NewBudgetPage({
         ➕ Nuevo presupuesto
       </h1>
 
-      Budget}
+      <form
+        action={createBudget}
         className="space-y-4"
       >
         <input
