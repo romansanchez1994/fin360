@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
+import DeleteButton from "@/components/DeleteButton";
+import { deleteBudget } from "./deleteBudget";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
@@ -195,6 +197,22 @@ export default async function BudgetsPage({
               <div className="text-sm text-gray-400">
                 {porcentaje.toFixed(0)}%
               </div>
+              <div className="flex items-center gap-6 mt-4">
+                <Link
+                  href={`/budgets/${budget.id}`}>
+                  ✏️ Editar
+                </Link>
+              
+                <form
+                  className="inline-flex"
+                  action={deleteBudget.bind(
+                    null,
+                    budget.id
+                  )}
+                >
+                  <DeleteButton />
+                </form>
+
             </div>
           );
           })
