@@ -61,8 +61,6 @@ export default async function BudgetsPage({
       .eq("household_id", HOUSEHOLD_ID)
       .eq("month", currentMonth)
       .eq("year", currentYear);
-  
-  console.log(error);
 
     return (
     <main className="p-6 max-w-md mx-auto">
@@ -97,13 +95,6 @@ export default async function BudgetsPage({
           ➕ Nuevo presupuesto
         </Link>
       </div>
-      <pre>
-        {JSON.stringify(budgets, null, 2)}
-      </pre>
-      <pre>
-        {JSON.stringify(error, null, 2)}
-      </pre>
-
         <div className="mt-6">
         {!budgets?.length ? (
 
