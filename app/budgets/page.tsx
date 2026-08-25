@@ -150,13 +150,20 @@ export default async function BudgetsPage({
                 {budget.categories?.name}
               </h2>
 
+              <div className="mt-3">
+                Presupuesto: {presupuesto.toFixed(2)} €
+              </div>
+              <div>
+                Gastado: {gastado.toFixed(2)} €
+              </div>
+              <div>
+                {disponible >= 0
+                  ? "Disponible"
+                  : "Exceso"}
+                : {Math.abs(disponible).toFixed(2)} €
+              </div>
               <div className="mt-2">
-                Presupuesto:
-                {" "}
-                {Number(
-                  budget.amount
-                ).toFixed(2)}
-                €
+                {porcentaje.toFixed(0)}%
               </div>
             </div>
           );
