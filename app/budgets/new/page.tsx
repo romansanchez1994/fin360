@@ -39,7 +39,12 @@ export default async function NewBudgetPage({
         ← Presupuestos
       </Link>
 
-      <h1 className="text-2xl font-bold mt-6 mb-6     className="space-y-4"
+      <h1 className="text-2xl font-bold mt-6 mb-6">
+        ➕ Nuevo presupuesto
+      </h1>
+
+      Budget}
+        className="space-y-4"
       >
         <input
           type="hidden"
