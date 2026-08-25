@@ -29,7 +29,7 @@ export default async function EditBudgetPage({
   return (
     <main className="p-6 max-w-md mx-auto">
       <Link
-        href="/"
+        href="/budgets"
         className="text-blue-400">
         ← Presupuestos
       </Link>
