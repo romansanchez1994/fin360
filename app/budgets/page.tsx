@@ -212,7 +212,7 @@ export default async function BudgetsPage({
                 >
                   <DeleteButton />
                 </form>
-
+              </div>
             </div>
           );
           })
