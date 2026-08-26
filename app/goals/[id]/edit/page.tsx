@@ -28,6 +28,11 @@ export default async function EditGoalPage({
       <form 
         action={createGoal}
         className="space-y-4">
+          <input
+              type="hidden"
+              name="id"
+              value={goal?.id}
+            />
         <div>
           <label
             htmlFor="name"
@@ -221,7 +226,7 @@ export default async function EditGoalPage({
             hover:bg-blue-500
           "
         >
-          Crear objetivo
+          Guardar Cambios
         </button>
       </form>
     </main>
