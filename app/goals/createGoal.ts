@@ -43,7 +43,14 @@ export async function createGoal(
     })
     .select()
     .single();
-
+  await supabase
+    .from("goal_contributions")
+    .insert({
+      goal_id: goal.id,
+      amount: initialAmount,
+      description:
+        "Aportación inicial",
+    });
   revalidatePath("/goals");
   redirect("/goals");
 }
