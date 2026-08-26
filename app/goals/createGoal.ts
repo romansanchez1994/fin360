@@ -40,7 +40,9 @@ export async function createGoal(
       target_amount: targetAmount,
       target_date:
         targetDate || null,
-    });
+    })
+    .select()
+    .single();
 
   revalidatePath("/goals");
   redirect("/goals");
