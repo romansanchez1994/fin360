@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
+import DeleteButton from "@/components/DeleteButton";
+import { deleteGoal } from "./deleteGoal";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
@@ -108,10 +110,18 @@ export default async function GoalsPage() {
                   }}
                 />
               </div>
-
               <p className="text-xs text-gray-400 mt-2">
                 {percentage.toFixed(0)}%
               </p>
+              <div className="flex items-center gap-6 mt-4">
+                <Link href="{`/goals/${goal.id}/edit`}">
+                  Editar
+                </Link>
+              
+                <form action={deleteGoal.bind()  >
+                  <DeleteButton />
+                </form>
+              </div>
             </div>
           );
           }
