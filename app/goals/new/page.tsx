@@ -143,7 +143,7 @@ export default function NewGoalPage() {
             htmlFor="targetAmount"
             className="block text-sm text-gray-400 mb-2"
           >
-            Importe objetivo
+            Cantidad Inicial
           </label>
           <input
             id="initialAmount"
