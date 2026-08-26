@@ -152,7 +152,10 @@ export default async function Home({
         total + Number(budget.amount),
       0
     );
-
+  const budgetUsage =
+    totalBudget > 0
+      ? (totalGastos / totalBudget) * 100
+      : 0;
   let budgetStatus =
     "Dentro del presupuesto";
   
