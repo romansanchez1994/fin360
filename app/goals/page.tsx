@@ -121,7 +121,7 @@ export default async function GoalsPage() {
                   className="inline-flex"
                   action={deleteGoal.bind(
                     null,
-                    budget.id
+                    goal.id
                   )}
                 >
                   <DeleteButton />
