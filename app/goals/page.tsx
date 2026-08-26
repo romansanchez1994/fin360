@@ -19,7 +19,11 @@ export default async function GoalsPage() {
           ascending: false,
         }
       );
-
+  const { data: contributions } =
+    await supabase
+      .from("goal_contributions")
+      .select("*");
+  
   return (
     <main className="p-6 max-w-md mx-auto">
       <div className="flex items-center justify-between mb-8">
@@ -46,7 +50,33 @@ export default async function GoalsPage() {
 
       <div className="space-y-4">
         {(goals ?? []).map(
-          (goal) => (
+          (goal) => {
+            const totalSaved =
+              (contributions ?? [])
+                .filter(
+                  (contribution) =>
+                    contribution.goal_id ===
+                    goal.id
+                )
+                .reduce(
+                  (total, contribution) =>
+                    total +
+                    Number(
+                      contribution.amount
+                    ),
+                  0
+                );
+        
+            const percentage =
+              Number(goal.target_amount) > 0
+                ? (totalSaved /
+                    Number(
+                      goal.target_amount
+                    )) *
+                  100
+                : 0;
+        
+            return (
             <div
               key={goal.id}
               className="
@@ -60,6 +90,7 @@ export default async function GoalsPage() {
               </h2>
 
               <p className="text-sm text-gray-400 mt-1">
+                {totalSaved.toFixed(2)} € de{" "}
                 {Number(
                   goal.target_amount
                 ).toFixed(2)}
@@ -70,16 +101,20 @@ export default async function GoalsPage() {
                 <div
                   className="bg-blue-500 h-3 rounded-full"
                   style={{
-                    width: "0%",
+                    width: `${Math.min(
+                      percentage,
+                      100
+                    )}%`,
                   }}
                 />
               </div>
 
               <p className="text-xs text-gray-400 mt-2">
-                0%
+                {percentage.toFixed(0)}%
               </p>
             </div>
-          )
+          );
+          }
         )}
       </div>
     </main>
