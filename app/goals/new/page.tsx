@@ -19,7 +19,7 @@ export default function NewGoalPage() {
         a registrar tu progreso.
       </p>
 
-      {createGoal}
+      <form action={createGoal}>
         <div>
           <label
             htmlFor="name"
