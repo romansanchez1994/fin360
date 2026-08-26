@@ -29,20 +29,20 @@ export async function createGoal(
 
   const targetDate =
     formData.get("targetDate") as string;
-
-  await supabase
-    .from("financial_goals")
-    .insert({
-      household_id: HOUSEHOLD_ID,
-      name,
-      description,
-      goal_type: goalType,
-      target_amount: targetAmount,
-      target_date:
-        targetDate || null,
-    })
-    .select()
-    .single();
+  const { data: goal } =
+    await supabase
+      .from("financial_goals")
+      .insert({
+        household_id: HOUSEHOLD_ID,
+        name,
+        description,
+        goal_type: goalType,
+        target_amount: targetAmount,
+        target_date:
+          targetDate || null,
+      })
+      .select()
+      .single();
   await supabase
     .from("goal_contributions")
     .insert({
