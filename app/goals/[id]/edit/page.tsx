@@ -2,10 +2,15 @@ import Link from "next/link";
 import { createGoal } from "../createGoal";
 import { supabase } from "@/lib/supabase/client";
 
-export default function EditGoalPage() {
-  const { id } =
-    await params;
-  
+export default async function EditGoalPage({
+    params,
+  }: {
+    params: Promise<{
+      id: string;
+    }>;
+  }) {
+  const { id } = await params;
+
   const { data: goal } =
     await supabase
       .from("financial_goals")
