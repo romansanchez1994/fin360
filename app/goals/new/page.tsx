@@ -19,7 +19,9 @@ export default function NewGoalPage() {
         a registrar tu progreso.
       </p>
 
-      <form action={createGoal}>
+      <form 
+        action={createGoal}
+        className="space-y-4">
         <div>
           <label
             htmlFor="name"
