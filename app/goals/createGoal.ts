@@ -2,6 +2,7 @@
 
 import { supabase } from "@/lib/supabase/client";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 const HOUSEHOLD_ID =
   "dbecda94-3798-4425-9616-74a6c08cd2c2";
@@ -39,4 +40,5 @@ export async function createGoal(
     });
 
   revalidatePath("/goals");
+  redirect("/goals");
 }
