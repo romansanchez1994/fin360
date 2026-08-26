@@ -275,14 +275,7 @@ export default async function PatrimonyPage() {
       <h1 className="text-3xl font-bold mb-8">
         🏦 Patrimonio
       </h1>
-
-      <p>
-        Gastos: {expenses?.length}
-      </p>
       
-      <p>
-        Total gastos: {totalExpenses}
-      </p>
       {/* Tarjeta 1: Resumen patrmonial */}
       
       <section
