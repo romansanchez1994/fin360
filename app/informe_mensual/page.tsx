@@ -356,6 +356,12 @@ return (
         <p className="text-sm text-gray-400 mt-1">
           {budgetStatus}
         </p>
+        <Link
+          href="/budgets"
+          className="text-blue-500"
+        >
+          Ver presupuestos →
+        </Link>
       </>
     )}
     </div>
