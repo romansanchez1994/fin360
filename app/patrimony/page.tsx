@@ -33,7 +33,7 @@ export default async function PatrimonyPage() {
     Number(
       profile?.initial_liquidity ?? 0
     );
-
+  
   const totalIncome =
     (incomes ?? []).reduce(
       (total, income) =>
@@ -68,12 +68,24 @@ export default async function PatrimonyPage() {
     accumulatedBalance -
     fundedGoals;
 
+  const totalPatrimony =
+    initialLiquidity +
+    accumulatedBalance;
+  
   return (
     <main className="p-6 max-w-md mx-auto">
       <h1 className="text-3xl font-bold mb-8">
         🏦 Patrimonio
       </h1>
-
+      <div className="border-2 border-green-500 rounded-xl p-4 mb-6">
+        <div className="text-sm text-gray-400">
+          Patrimonio total
+        </div>
+      
+        <div className="text-4xl font-bold">
+          {totalPatrimony.toFixed(2)} €
+        </div>
+      </div>
       <div className="space-y-4">
         <div className="border rounded-xl p-4">
           <div className="text-sm text-gray-400">
