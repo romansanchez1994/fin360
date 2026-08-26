@@ -276,7 +276,96 @@ export default async function PatrimonyPage() {
         🏦 Patrimonio
       </h1>
 
-      {/* Tarjeta 1: grafico patrmonial */}
+      {/* Tarjeta 1: Resumen patrmonial */}
+      
+      <section
+        className="
+          rounded-3xl
+          border
+          border-zinc-700
+          bg-zinc-950
+          p-6
+          shadow-xl
+          mb-6
+        "
+      >
+        <p className="text-sm text-gray-400">
+          Patrimonio total
+        </p>
+      
+        <p className="text-4xl font-bold mt-2">
+          {currencyFormatter.format(
+            totalPatrimony
+          )}
+        </p>
+      
+        <div className="border-t border-white/10 mt-6 pt-6">
+          <div className="grid grid-cols-2 gap-5">
+      
+            <div>
+              <p className="text-xs text-gray-400">
+                Liquidez disponible
+              </p>
+      
+              <p className="text-xl font-semibold text-blue-400 mt-1">
+                {currencyFormatter.format(
+                  availableLiquidity
+                )}
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-xs text-gray-400">
+                Liquidez inicial
+              </p>
+      
+              <p className="text-xl font-semibold mt-1">
+                {currencyFormatter.format(
+                  initialLiquidity
+                )}
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-xs text-gray-400">
+                Balance acumulado
+              </p>
+      
+              <p
+                className={`
+                  text-xl
+                  font-semibold
+                  mt-1
+                  ${
+                    accumulatedBalance >= 0
+                      ? "text-green-400"
+                      : "text-red-400"
+                  }
+                `}
+              >
+                {currencyFormatter.format(
+                  accumulatedBalance
+                )}
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-xs text-gray-400">
+                Objetivos financiados
+              </p>
+      
+              <p className="text-xl font-semibold mt-1">
+                {currencyFormatter.format(
+                  fundedGoals
+                )}
+              </p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+      {/* Tarjeta 2: grafico patrmonial */}
 
       <section
         className="
