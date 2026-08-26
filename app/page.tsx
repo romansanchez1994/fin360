@@ -73,6 +73,11 @@ export default async function Home({
     .from("incomes")
     .select("*")
     .eq("household_id", HOUSEHOLD_ID);
+
+  const { data: budgets } = await supabase
+    .from("budgets")
+    .select("*")
+    .eq("household_id", HOUSEHOLD_ID);
   
   const previousDate = new Date(
     currentYear,
@@ -141,6 +146,23 @@ export default async function Home({
   const balance =
     totalIngresos - totalGastos;
 
+  const totalBudget =
+    (budgets ?? []).reduce(
+      (total, budget) =>
+        total + Number(budget.amount),
+      0
+    );
+
+  let budgetStatus =
+    "Dentro del presupuesto";
+  
+  if (budgetUsage >= 100) {
+    budgetStatus =
+      "Presupuesto superado";
+  } else if (budgetUsage >= 80) {
+    budgetStatus =
+      "Cerca del límite";
+  }
   const numeroGastos = expensesCurrentMonth.length;
 
   const numeroMovimientos =
