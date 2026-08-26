@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createGoal } from "../createGoal";
+import { updateGoal } from "../../updateGoal";
 import { supabase } from "@/lib/supabase/client";
 
 export default async function EditGoalPage({
