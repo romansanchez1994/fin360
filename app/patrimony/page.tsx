@@ -16,7 +16,7 @@ export default async function PatrimonyPage() {
 
   const { data: incomes } =
     await supabase
-      .from("incomes")
+      .from("income")
       .select("*");
 
   const { data: expenses } =
@@ -91,4 +91,30 @@ export default async function PatrimonyPage() {
           </div>
 
           <div className="text-2xl font-semibold">
-        
+            {accumulatedBalance.toFixed(2)} €
+          </div>
+        </div>
+
+        <div className="border rounded-xl p-4">
+          <div className="text-sm text-gray-400">
+            Objetivos financiados
+          </div>
+
+          <div className="text-2xl font-semibold">
+            {fundedGoals.toFixed(2)} €
+          </div>
+        </div>
+
+        <div className="border-2 border-blue-500 rounded-xl p-4">
+          <div className="text-sm text-gray-400">
+            Liquidez disponible
+          </div>
+
+          <div className="text-3xl font-bold">
+            {availableLiquidity.toFixed(2)} €
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
