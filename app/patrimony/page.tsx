@@ -276,7 +276,7 @@ export default async function PatrimonyPage() {
         🏦 Patrimonio
       </h1>
 
-      {/* Tarjeta 1: resumen patrimonial */}
+      {/* Tarjeta 1: grafico patrmonial */}
 
       <section
         className="
@@ -318,58 +318,6 @@ export default async function PatrimonyPage() {
             )}
           </span>
         </div>
-      </section>
-
-      {/* Tarjeta 2: gráfico patrimonial */}
-
-      <section
-        className="
-          rounded-3xl
-          border
-          border-zinc-700
-          bg-zinc-950
-          p-6
-          shadow-xl
-        "
-      >
-        <div className="mb-5">
-          <h2 className="text-xl font-bold">
-            Evolución del patrimonio
-          </h2>
-
-          <p className="text-sm text-gray-400 mt-1">
-            Patrimonio acumulado desde
-            el inicio del seguimiento
-          </p>
-        </div>
-
-        {chartPoints.length > 1 ? (
-          <div className="w-full overflow-hidden">
-            
-
-            <div className="flex items-center justify-between mt-2 text-xs text-gray-400">
-              <span>
-                Inicio:{" "}
-                {currencyFormatter.format(
-                  initialLiquidity
-                )}
-              </span>
-
-              <span>
-                Actual:{" "}
-                {currencyFormatter.format(
-                  totalPatrimony
-                )}
-              </span>
-            </div>
-          </div>
-        ) : (
-          <p className="text-sm text-gray-400">
-            Todavía no hay suficientes
-            movimientos para mostrar la
-            evolución.
-          </p>
-        )}
       </section>
     </main>
   );
