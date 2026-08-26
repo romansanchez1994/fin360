@@ -72,7 +72,11 @@ const { data: incomes } = await supabase
   
 const { data: budgets } = await supabase
     .from("budgets")
-    .select("*")
+    .select(`
+      *,
+      categories (
+        id,
+        name)`)
     .eq("household_id", HOUSEHOLD_ID);
   
 const expensesCurrentMonth =
@@ -254,7 +258,20 @@ const totalCategorias =
       total + categoria.importe,
     0
   );
+const presupuestosPorCategoria =
+  (budgets ?? []).reduce(
+    (acc: any, budget: any) => {
+      const nombre =
+        budget.categories?.name;
 
+      if (nombre) {
+        acc[nombre] = budget;
+      }
+
+      return acc;
+    },
+    {}
+  );
 const totalBudget =
     (budgets ?? []).reduce(
       (total, budget) =>
