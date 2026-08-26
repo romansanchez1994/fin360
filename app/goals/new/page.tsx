@@ -137,7 +137,37 @@ export default function NewGoalPage() {
             "
           />
         </div>
-
+        
+        <div>
+          <label
+            htmlFor="targetAmount"
+            className="block text-sm text-gray-400 mb-2"
+          >
+            Importe objetivo
+          </label>
+          <input
+            id="initialAmount"
+            name="initialAmount"
+            type="number"
+            required
+            min="0.0"
+            step="0.01"
+            placeholder="0"
+            className="
+              w-full
+              rounded-xl
+              border
+              border-gray-700
+              bg-zinc-900
+              px-4
+              py-3
+              text-white
+              outline-none
+              focus:border-blue-500
+            "
+          />
+        </div>
+        
         <div>
           <label
             htmlFor="targetDate"
