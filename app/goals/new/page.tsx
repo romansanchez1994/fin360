@@ -5,7 +5,7 @@ export default function NewGoalPage() {
   return (
     <main className="p-6 max-w-md mx-auto">
       <div className="mb-6">
-        /goals
+        <Link href="/goals">
           ← Volver a objetivos
         </Link>
       </div>
