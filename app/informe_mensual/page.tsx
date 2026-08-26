@@ -433,16 +433,17 @@ return (
                   categoria.nombre
                 ] && (
                   <div className="text-sm text-gray-400 mb-1">
-                    Presupuesto: {
-                      (
-                        categoria.importe /
+                    Presupuesto:{" "}
+                    {(
+                      (categoria.importe /
                         Number(
                           presupuestosPorCategoria[
                             categoria.nombre
                           ].amount
-                        )
-                      ) * 100
-                    ).toFixed(0)}%
+                        )) *
+                      100
+                    ).toFixed(0)}
+                    %
                   </div>
                 )}
                 <div className="w-full bg-gray-800 rounded-full h-4">
