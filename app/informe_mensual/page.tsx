@@ -336,7 +336,23 @@ return (
           {totalBudget.toFixed(2)} € utilizados (
           {budgetUsage.toFixed(0)}%)
         </p>
-    
+        <div className="w-full bg-gray-800 rounded-full h-3 mt-3">
+          <div
+            className={`h-3 rounded-full ${
+              budgetUsage >= 100
+                ? "bg-red-500"
+                : budgetUsage >= 80
+                ? "bg-yellow-500"
+                : "bg-green-500"
+            }`}
+            style={{
+              width: `${Math.min(
+                budgetUsage,
+                100
+              )}%`,
+            }}
+          />
+        </div>
         <p className="text-sm text-gray-400 mt-1">
           {budgetStatus}
         </p>
