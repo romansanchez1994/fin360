@@ -18,7 +18,10 @@ export async function createGoal(
 
   const goalType =
     formData.get("goalType") as string;
-
+  const initialAmount =
+    Number(
+      formData.get("initialAmount")
+    ) || 0;
   const targetAmount =
     Number(
       formData.get("targetAmount")
