@@ -26,7 +26,7 @@ export default async function EditGoalPage({
       </div>
 
       <form 
-        action={createGoal}
+        action={updateGoal}
         className="space-y-4">
           <input
               type="hidden"
