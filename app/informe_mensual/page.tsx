@@ -11,7 +11,7 @@ export default async function InformeMensualPage({
     year?: string;
   }>;
 }) {
-  const params = await searchParams;
+const params = await searchParams;
 
 const now = new Date();
 
@@ -65,12 +65,16 @@ const { data: expenses } = await supabase
   `)
   .eq("household_id", HOUSEHOLD_ID);
 
-
 const { data: incomes } = await supabase
   .from("incomes")
   .select("*")
   .eq("household_id", HOUSEHOLD_ID);
-
+  
+const { data: budgets } = await supabase
+    .from("budgets")
+    .select("*")
+    .eq("household_id", HOUSEHOLD_ID);
+  
 const expensesCurrentMonth =
   (expenses ?? []).filter(
     (expense) => {
@@ -250,6 +254,28 @@ const totalCategorias =
       total + categoria.importe,
     0
   );
+
+const totalBudget =
+    (budgets ?? []).reduce(
+      (total, budget) =>
+        total + Number(budget.amount),
+      0
+    );
+const budgetUsage =
+    totalBudget > 0
+      ? (totalGastos / totalBudget) * 100
+      : 0;
+let budgetStatus =
+    "Dentro del presupuesto";
+  
+if (budgetUsage >= 100) {
+    budgetStatus =
+      "Presupuesto superado";
+} else if (budgetUsage >= 80) {
+    budgetStatus =
+      "Cerca del límite";
+}
+  
 return (
   <main className="max-w-4xl mx-auto p-6">
     <Link
@@ -296,6 +322,26 @@ return (
       <div>
         Ahorro: {ahorro.toFixed(1)} %
       </div>
+
+      {totalBudget > 0 && (
+      <>
+        <div className="border-t border-gray-700 my-4" />
+    
+        <p className="text-gray-400 text-sm">
+          Presupuesto mensual
+        </p>
+    
+        <p className="mt-2">
+          {totalGastos.toFixed(2)} € de{" "}
+          {totalBudget.toFixed(2)} € utilizados (
+          {budgetUsage.toFixed(0)}%)
+        </p>
+    
+        <p className="text-sm text-gray-400 mt-1">
+          {budgetStatus}
+        </p>
+      </>
+    )}
     </div>
 
     <div className="mt-6 border rounded-xl p-6">
