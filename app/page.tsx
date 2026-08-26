@@ -301,6 +301,13 @@ export default async function Home({
       
           </div>
         </div>
+        
+        {totalBudget > 0 && (
+          <div className="mt-4">
+            Presupuesto: {totalBudget.toFixed(2)} €
+          </div>
+        )}
+        
       </div>
 
       <div className="mt-4 text-center">
