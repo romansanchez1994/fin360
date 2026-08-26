@@ -119,7 +119,7 @@ export default async function GoalsPage() {
                 </Link>
                 <form
                   className="inline-flex"
-                  action={deleteBudget.bind(
+                  action={deleteGoal.bind(
                     null,
                     budget.id
                   )}
