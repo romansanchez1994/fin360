@@ -453,17 +453,15 @@ export default async function Home({
       
           </div>
         </div>
-        
+          <div className="mt-4 text-center">
+          <Link
+            href={`/informe_mensual?month=${currentMonth}&year=${currentYear}`}
+            className="text-blue-500">
+            📊 Ver informe mensual →
+          </Link>
+        </div>
       </div>
 
-      <div className="mt-4 text-center">
-        <Link
-          href={`/informe_mensual?month=${currentMonth}&year=${currentYear}`}
-          className="text-blue-500">
-          📊 Ver informe mensual →
-        </Link>
-      </div>
-      
       <div
         className="
           mt-6
