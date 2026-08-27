@@ -6,6 +6,9 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { deleteExpense } from "./expenses/deleteExpense";
 import { deleteIncome } from "./incomes/deleteIncome";
+import ExpenseTrend from "@/components/dashboard/ExpenseTrend";
+import PatrimonyTrend from "@/components/dashboard/PatrimonyTrend";
+
 export const dynamic = "force-dynamic";
 
 const HOUSEHOLD_ID =
@@ -74,7 +77,38 @@ export default async function Home({
     .select("*")
     .eq("household_id", HOUSEHOLD_ID);
 
+  const { data: financialProfile } = await supabase
+  .from("financial_profile")
+  .select("*")
+  .eq("household_id", HOUSEHOLD_ID)
+  .single();
+
+  const { data: financialGoals } = await supabase
+    .from("financial_goals")
+    .select("id")
+    .eq("household_id", HOUSEHOLD_ID);
   
+  const goalIds =
+    (financialGoals ?? []).map(
+      (goal) => goal.id
+    );
+  
+  let goalContributions: {
+    amount: number | string;
+  }[] = [];
+  
+  if (goalIds.length > 0) {
+    const {
+      data: contributionData,
+    } = await supabase
+      .from("goal_contributions")
+      .select("amount")
+      .in("goal_id", goalIds);
+  
+    goalContributions =
+      contributionData ?? [];
+  }
+
   
   const previousDate = new Date(
     currentYear,
@@ -143,7 +177,148 @@ export default async function Home({
   const balance =
     totalIngresos - totalGastos;
 
+  const initialLiquidity =
+    Number(
+      financialProfile?.initial_liquidity ??
+        0
+    );
   
+  const historicalIncome =
+    (incomes ?? []).reduce(
+      (total, income) =>
+        total +
+        Number(income.amount),
+      0
+    );
+  
+  const historicalExpenses =
+    (expenses ?? []).reduce(
+      (total, expense) =>
+        total +
+        Number(expense.amount),
+      0
+    );
+  
+  const historicalBalance =
+    historicalIncome -
+    historicalExpenses;
+  
+  const fundedGoals =
+    goalContributions.reduce(
+      (
+        total,
+        contribution
+      ) =>
+        total +
+        Number(
+          contribution.amount
+        ),
+      0
+    );
+  
+  const totalPatrimony =
+    initialLiquidity +
+    historicalBalance;
+  
+  const availableLiquidity =
+    totalPatrimony -
+    fundedGoals;
+  
+  const monthlyPatrimonyMovements: Record<
+    string,
+    number
+  > = {};
+  
+  (incomes ?? []).forEach(
+    (income) => {
+      const date =
+        new Date(income.date);
+  
+      const key =
+        `${date.getFullYear()}-` +
+        `${String(
+          date.getMonth() + 1
+        ).padStart(2, "0")}`;
+  
+      monthlyPatrimonyMovements[key] =
+        (
+          monthlyPatrimonyMovements[
+            key
+          ] ?? 0
+        ) +
+        Number(income.amount);
+    }
+  );
+  
+  (expenses ?? []).forEach(
+    (expense) => {
+      const date =
+        new Date(expense.date);
+  
+      const key =
+        `${date.getFullYear()}-` +
+        `${String(
+          date.getMonth() + 1
+        ).padStart(2, "0")}`;
+  
+      monthlyPatrimonyMovements[key] =
+        (
+          monthlyPatrimonyMovements[
+            key
+          ] ?? 0
+        ) -
+        Number(expense.amount);
+    }
+  );
+  
+  const patrimonyMonths =
+    Object.keys(
+      monthlyPatrimonyMovements
+    ).sort();
+  
+  let runningPatrimony =
+    initialLiquidity;
+  
+  const dashboardPatrimonyHistory = [
+    {
+      label: "Inicio",
+      value: initialLiquidity,
+    },
+  
+    ...patrimonyMonths.map(
+      (monthKey) => {
+        runningPatrimony +=
+          monthlyPatrimonyMovements[
+            monthKey
+          ];
+  
+        const [year, month] =
+          monthKey
+            .split("-")
+            .map(Number);
+  
+        const label =
+          new Date(
+            year,
+            month - 1,
+            1
+          )
+            .toLocaleDateString(
+              "es-ES",
+              {
+                month: "short",
+              }
+            )
+            .replace(".", "");
+  
+        return {
+          label,
+          value:
+            runningPatrimony,
+        };
+      }
+    ),
+  ];
   const numeroGastos = expensesCurrentMonth.length;
 
   const numeroMovimientos =
@@ -288,6 +463,73 @@ export default async function Home({
           className="text-blue-500">
           📊 Ver informe mensual →
         </Link>
+      </div>
+      
+      <div
+        className="
+          mt-6
+          mb-6
+          rounded-3xl
+          p-6
+          text-white
+          shadow-xl
+          bg-gradient-to-r
+          from-indigo-900
+          via-blue-900
+          to-slate-900
+        "
+      >
+        <p className="text-white/70 text-sm">
+          Patrimonio
+        </p>
+      
+        <h2 className="text-4xl font-bold mt-3">
+          {totalPatrimony.toFixed(2)} €
+        </h2>
+      
+        <p className="text-white/60 mt-2">
+          Patrimonio total
+        </p>
+      
+        <div className="mt-5">
+          <PatrimonyTrend
+            data={
+              dashboardPatrimonyHistory
+            }
+          />
+        </div>
+      
+        <div className="border-t border-white/20 mt-6 pt-6">
+          <div className="grid grid-cols-2 gap-4 text-center">
+      
+            <div>
+              <p className="text-white/60 text-xs">
+                Liquidez
+              </p>
+      
+              <p className="text-blue-300 font-bold text-lg">
+                {availableLiquidity.toFixed(2)} €
+              </p>
+            </div>
+      
+            <div>
+              <p className="text-white/60 text-xs">
+                Objetivos
+              </p>
+      
+              <p className="font-bold text-lg">
+                {fundedGoals.toFixed(2)} €
+              </p>
+            </div>
+      
+          </div>
+        </div>
+      
+        <div className="mt-5 text-right">
+          <Link href="/patrimony">
+            🏦 Ver patrimonio →
+          </Link>
+        </div>
       </div>
       
       <Link
