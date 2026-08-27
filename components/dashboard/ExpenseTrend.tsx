@@ -151,3 +151,4 @@ export default function ExpenseTrend({
       </ResponsiveContainer>
     </div>
   );
+}
