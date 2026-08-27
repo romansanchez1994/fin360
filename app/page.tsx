@@ -6,7 +6,6 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase/client";
 import { deleteExpense } from "./expenses/deleteExpense";
 import { deleteIncome } from "./incomes/deleteIncome";
-import ExpenseTrend from "@/components/dashboard/ExpenseTrend";
 import PatrimonyTrend from "@/components/dashboard/PatrimonyTrend";
 
 export const dynamic = "force-dynamic";
