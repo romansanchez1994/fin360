@@ -490,9 +490,8 @@ export default async function Home({
       
         <div className="mt-5">
           <PatrimonyTrend
-            data={
-              dashboardPatrimonyHistory
-            }
+            data={dashboardPatrimonyHistory}
+            compact
           />
         </div>
       
