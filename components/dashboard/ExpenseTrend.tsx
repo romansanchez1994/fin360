@@ -127,7 +127,7 @@ export default function ExpenseTrend({
               currencyFormatter.format(
                 Number(value)
               ),
-              "Balance",
+              "Gastos",
             ]}
             labelFormatter={(label) =>
               `Día ${label}`
