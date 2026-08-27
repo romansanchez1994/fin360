@@ -17,6 +17,7 @@ type PatrimonyPoint = {
 
 type PatrimonyTrendProps = {
   data: PatrimonyPoint[];
+  compact?: boolean;
 };
 
 const currencyFormatter =
@@ -31,6 +32,7 @@ const currencyFormatter =
 
 export default function PatrimonyTrend({
   data,
+  compact = false,
 }: PatrimonyTrendProps) {
   if (data.length < 2) {
     return (
@@ -42,7 +44,11 @@ export default function PatrimonyTrend({
   }
 
   return (
-    <div className="w-full h-64">
+    <div className={
+      compact
+        ? "w-full h-44"
+        : "w-full h-64"
+    }>
       <ResponsiveContainer
         width="100%"
         height="100%"
